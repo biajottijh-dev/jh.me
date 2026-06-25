@@ -1,0 +1,601 @@
+{
+  "meta": {
+    "name": "김정희",
+    "nameEn": "Jeounghee Kim",
+    "title": "AI Service PM · PO",
+    "titleEn": "AI Service PM · PO",
+    "philosophy": "세상을 비추는 거울",
+    "philosophyEn": "A Mirror That Reflects the World",
+    "email": "biajotti.jh@gmail.com",
+    "heroImage": "hero.png",
+    "aboutImage": "about.jpg"
+  },
+  "about": {
+    "ko": "팀의 성장을 이끌며 문제의 본질을 정의하고 해답을 함께 만들어가는 UIUX를 시작으로 지금은 AI 기반 서비스 PM·PO의 역할을 하고 있습니다. AI 기술의 원리를 이해하고 모델 선택, API 구조, 데이터 파이프라인 등 기능 구현의 상세 기술 방식까지 설계할 수 있는 실무 감각을 가지고 있습니다. 기획과 디자인, 개발 간의 언어를 통합하며 기술적 실현 가능성과 비즈니스 목표를 동시에 달성하는 서비스 아키텍처를 설계해 왔습니다.",
+    "en": "Starting from UIUX, I now lead AI-based service strategy as a PM and PO. With a deep understanding of AI technology — from model selection to API architecture and data pipelines — I bridge planning, design, and development to build services that achieve both technical feasibility and business goals."
+  },
+  "heroKeywords": [
+    "AI Service PO/PM",
+    "Business Director",
+    "UIUX Strategy",
+    "Product Planning",
+    "Service Architecture",
+    "Commerce & Fintech",
+    "CX Design",
+    "AI Agent"
+  ],
+  "career": [
+    {
+      "id": "c1",
+      "company": "㈜다이퀘스트",
+      "period": "2022.09 - 현재",
+      "duration": "3년 10개월",
+      "type": "정규직",
+      "role": "AI 서비스 PO, PM 및 마케팅 전략 수립 및 실행",
+      "description": "서비스 전략 수립 및 실행, AI 기술연구소와 기술 방향 수립, UIUX 포함 CX 전략, 마케팅 전략 수립 및 실행"
+    },
+    {
+      "id": "c2",
+      "company": "피플",
+      "period": "2021.03 - 2022.08",
+      "duration": "1년 6개월",
+      "type": "정규직",
+      "role": "UIUX 전문 회사대표 / PM&PMO",
+      "description": "UIUX 전문 회사 설립 및 경영관리, 대표이사 겸임, 기획/디자인 구성 전체 인력 6명"
+    },
+    {
+      "id": "c3",
+      "company": "㈜아메바",
+      "period": "2019.06 - 2021.02",
+      "duration": "1년 9개월",
+      "type": "정규직",
+      "role": "UIUX 리더 및 영업/매출/사업 관리",
+      "description": "UIUX 전략/방향성/방법론 수립, 내부 인력 교육, 제안서 디렉팅 및 PT, 사업관리 및 프로젝트 PM/PMO"
+    },
+    {
+      "id": "c4",
+      "company": "뱅크웨어글로벌㈜",
+      "period": "2017.10 - 2019.05",
+      "duration": "1년 8개월",
+      "type": "정규직",
+      "role": "금융 SI UIUX 리딩 및 프로젝트 PM",
+      "description": "UX 채널사업 PM, UX전략 및 컨설팅, 프로젝트 관리, 방법론 제안"
+    },
+    {
+      "id": "c5",
+      "company": "휴메이저러럭셔리",
+      "period": "2016.06 - 2017.08",
+      "duration": "1년 3개월",
+      "type": "정규직",
+      "role": "이커머스 구축, 운영, 디지털마케팅",
+      "description": "폴리폴리 브랜드몰 구축 및 운영, 온라인 물량계획, 매출 및 마케팅 실무 진행"
+    },
+    {
+      "id": "c6",
+      "company": "프럼 UI/UX 컨설팅",
+      "period": "2015.06 - 2016.04",
+      "duration": "11개월",
+      "type": "계약직",
+      "role": "신라면세점 KR&CN Web/Mobile 차세대 구축",
+      "description": "UIUX 컨설팅 및 PL 역할, 일정관리, 대외부 커뮤니케이션, 화면설계서 작성"
+    },
+    {
+      "id": "c7",
+      "company": "서양네트웍스",
+      "period": "2013.11 - 2015.04",
+      "duration": "1년 6개월",
+      "type": "정규직",
+      "role": "신규사업(온라인이커머스) 전체 PM 및 쇼핑몰 운영",
+      "description": "5개 대표 브랜드 통합몰 구축 및 운영, 마케팅"
+    },
+    {
+      "id": "c8",
+      "company": "아지앙스코리아",
+      "period": "2012.04 - 2013.09",
+      "duration": "1년 6개월",
+      "type": "정규직",
+      "role": "Platform Dev Unit 리더 및 웹, 모바일 어플리케이션 기획",
+      "description": "라코스테 브랜드 & KR 쇼핑몰 운영, 프로젝트 QA & PM"
+    },
+    {
+      "id": "c9",
+      "company": "(주)ISEcommerce",
+      "period": "2008.03 - 2012.03",
+      "duration": "4년 1개월",
+      "type": "정규직",
+      "role": "이커머스 컨설팅, 구축 및 운영 PM",
+      "description": "차세대 글로벌 이커머스 통합 플랫폼 구축 PM, 외부 요청 사이트 제작 및 구축 PM"
+    },
+    {
+      "id": "c10",
+      "company": "가야미디어",
+      "period": "2001.03 - 2004.03",
+      "duration": "3년 1개월",
+      "type": "정규직",
+      "role": "사이트 운영 및 기획/디자인, 프로모션 기획 및 운영",
+      "description": "자체 사이트(www.ikissyou.com) 구축 및 운영, 영화 커뮤니티 1년 만에 10만 회원 모집"
+    },
+    {
+      "id": "c11",
+      "company": "지오아이",
+      "period": "1996.07 - 2001.02",
+      "duration": "4년 8개월",
+      "type": "정규직",
+      "role": "웹 디자인 및 기획",
+      "description": "자체 개발 사이트 구축 및 운영, 웹 사이트 디자인, 기획 및 운영"
+    }
+  ],
+  "projects": [
+    {
+      "id": "p1",
+      "category": "AI Service",
+      "company": "다이퀘스트 / 플루닛",
+      "title": "플루닛 브랜드 통합 사이트 리뉴얼",
+      "period": "2021.11 - 2022.04",
+      "type": "Renewal, 반응형 Web",
+      "summary": "AI 기술을 활용한 B2B·B2C 서비스 허브 플랫폼 전체 리뉴얼",
+      "description": "플루닛 브랜드 사이트는 자사의 AI기술을 활용한 B2B, B2C 서비스들을 소개하고 이용할 수 있는 게이트와 통합 회원 관리의 역할을 하는 허브 플랫폼이었습니다. 입사 후 6개월 만에 전체 리뉴얼을 진행하여 어드민과 반응형 웹으로 사이트를 리뉴얼 완료하여 팀 전원이 가장 높은 인사평가 점수를 받았습니다.",
+      "url": "https://www.ploonet.com",
+      "tags": [
+        "PO",
+        "PM",
+        "브랜드사이트",
+        "반응형"
+      ],
+      "thumb": "",
+      "images": []
+    },
+    {
+      "id": "p2",
+      "category": "AI Service",
+      "company": "다이퀘스트 / 플루닛",
+      "title": "손비서 — 초개인화 AI비서 모바일 앱",
+      "period": "2022.12 - 2024.06",
+      "type": "신규서비스, 모바일 앱",
+      "summary": "통화 관리·AI 응대·일정 관리를 결합한 초개인화 AI 비서 서비스",
+      "description": "AI콜센터 기술력을 기반으로 통화녹음, 요약, 일정관리, 연락처 기반 고객관리 등 영업과 중소기업/소상공인을 타겟으로 만들어진 AI 개인비서 서비스입니다. GPT와 자체 LLM을 기반으로 12개의 보이스 유형을 TTS로 만들어내고 응대 시나리오까지 전체 PO 역할을 수행했습니다.",
+      "url": "https://apps.apple.com/kr/app/%EC%86%90%EB%B9%84%EC%84%9C/id6449721341",
+      "tags": [
+        "PO",
+        "모바일앱",
+        "AI",
+        "LLM",
+        "TTS"
+      ],
+      "thumb": "",
+      "images": []
+    },
+    {
+      "id": "p3",
+      "category": "AI Service",
+      "company": "다이퀘스트 / 플루닛",
+      "title": "미미콘 — 생성형 AI 소셜 플랫폼",
+      "period": "2024.01 - 2024.07",
+      "type": "신규서비스, 모바일 앱",
+      "summary": "실시간 AI 이미지 생성 기반 이모티콘·소통 모바일 플랫폼",
+      "description": "프롬프트 명령과 실시간 이미지 생성 기술을 중심으로 MZ세대의 소통 방식과 공유를 위해 만들어진 모바일 서비스. 실시간 AI 이미지 생성, STT/TTS, 페르소나 별 AI LLM 등 AI의 모든 기술들이 집약된 서비스입니다.",
+      "url": "",
+      "tags": [
+        "PO",
+        "모바일앱",
+        "생성형AI",
+        "이미지생성"
+      ],
+      "thumb": "thumbs/p3-03.jpg",
+      "images": [
+        "thumbs/p3-03.jpg"
+      ]
+    },
+    {
+      "id": "p4",
+      "category": "AI Service",
+      "company": "다이퀘스트 / 플루닛",
+      "title": "워크센터 — AI 컨택센터 SaaS",
+      "period": "2023.01 - 2023.08",
+      "type": "신규서비스, 반응형 웹/모바일 앱",
+      "summary": "자연스러운 TTS 기반 비즈니스 AI ARS·컨택센터 서비스",
+      "description": "AI ARS 서비스를 중심으로 기계적이 아닌 자연스러운 TTS와 병원, 물류, 판매 등의 각 비즈니스 별 다양한 응대 시나리오를 제공하는 SaaS 서비스. 프런트 전체 기획·디자인·개발 디렉팅 및 통합 정책 정의를 담당했습니다.",
+      "url": "https://workcenter.ploonet.com",
+      "tags": [
+        "PO",
+        "SaaS",
+        "AICC",
+        "TTS"
+      ],
+      "thumb": "thumbs/p4-04.jpg",
+      "images": [
+        "thumbs/p4-04.jpg"
+      ]
+    },
+    {
+      "id": "p5",
+      "category": "AI Service",
+      "company": "다이퀘스트 / 플루닛",
+      "title": "젠웨이브 — 멀티모달 AI 플랫폼",
+      "period": "2024.08 - 2025.10",
+      "type": "신규서비스, Web",
+      "summary": "단어 하나로 이미지·영상·음악을 자동 생성하는 멀티모달 플랫폼",
+      "description": "단어 하나, 문장 한 줄로 자동 완성되는 프롬프트 증강 기술을 기반으로 이미지, 노래, 영상, 캐릭터, BGM, 숏츠를 자동으로 생성하는 멀티 모달 플랫폼. 미드저니, 스테이블디퓨전, 구글 Veo 등 다양한 AI 엔진 적용.",
+      "url": "https://genwave.ai.kr",
+      "tags": [
+        "PO",
+        "멀티모달",
+        "생성형AI",
+        "이미지/영상"
+      ],
+      "thumb": "thumbs/p5-05.jpg",
+      "images": [
+        "thumbs/p5-05.jpg"
+      ]
+    },
+    {
+      "id": "p6",
+      "category": "AI Service",
+      "company": "다이퀘스트 / 플루닛",
+      "title": "젠웨이브 스튜디오 — AI 영상 생성·편집 플랫폼",
+      "period": "2023.02 - 2025.12",
+      "type": "CX총괄",
+      "summary": "AI 아바타 및 문서 업로드로 영상을 자동 생성하는 스튜디오 플랫폼",
+      "description": "AI아바타 및 문서 업로드 시 영상 자동생성이 되는 젠웨이브 스튜디오 CX총괄. CX 및 사용성 검증, AI 품질 관리, 매출 및 BD 전략 수립 및 실행. 한라대학교 공동사업 'AI프로페서' CX 담당.",
+      "url": "https://studio.ploonet.com/main/",
+      "tags": [
+        "CX",
+        "AI영상",
+        "아바타",
+        "플랫폼"
+      ],
+      "thumb": "thumbs/p6-06.jpg",
+      "images": [
+        "thumbs/p6-06.jpg"
+      ]
+    },
+    {
+      "id": "p7",
+      "category": "AI Service",
+      "company": "다이퀘스트 / 플루닛",
+      "title": "PMF 검증을 통한 서비스 도출과 구현",
+      "period": "2022.09 - 2024.05",
+      "type": "전략/기획",
+      "summary": "AI 서비스의 Product-Market Fit 검증 프로세스 설계 및 실행",
+      "description": "PMF 검증을 통한 서비스 구현은 서비스를 직접 사용하는 대상을 중심으로 가설 수립, 내부 전체 직원·타겟 고객 포커스 인터뷰와 테스트 등의 과정을 통해 검증하고 이 결과를 통해 서비스의 궁극적인 목표와 향후 비즈니스 로드맵, 마케팅과 세일즈 방향까지 수립해나갔습니다.",
+      "url": "",
+      "tags": [
+        "PMF",
+        "전략",
+        "리서치",
+        "BM"
+      ],
+      "thumb": "thumbs/p7-07.jpg",
+      "images": [
+        "thumbs/p7-07.jpg"
+      ]
+    },
+    {
+      "id": "p8",
+      "category": "Propose & Consulting",
+      "company": "아메바",
+      "title": "호텔신라 신라트립 & 인터넷 면세점 연간 운영",
+      "period": "2019.12 - 2020.08",
+      "type": "Renewal, PC web, Mobile App",
+      "summary": "경쟁 PT 수주 후 연간 운영을 수행한 면세점 UX 제안 프로젝트",
+      "description": "4개의 업체와 경쟁 PT를 통해 수주, 2020년 연간 운영을 수행한 프로젝트. 사용자 & 대상 타겟 분석, 시장현황 및 경쟁사 현황 분석, 제안 방향성 도출, 컨셉 슬로건 및 전략 방안 정의, 시안용 프로토타입 설계 6단계로 수행했습니다.",
+      "url": "",
+      "tags": [
+        "제안",
+        "PT",
+        "UX컨설팅",
+        "이커머스"
+      ],
+      "thumb": "thumbs/p9-09.jpg",
+      "images": [
+        "thumbs/p9-09.jpg"
+      ]
+    },
+    {
+      "id": "p9",
+      "category": "Propose & Consulting",
+      "company": "아메바",
+      "title": "SKT Jump AR/VR App 고도화",
+      "period": "2020.02 - 2021.02",
+      "type": "Renewal, Mobile web, App",
+      "summary": "5천만원 프로젝트에서 연간 운영으로 이어진 AR/VR 앱 고도화",
+      "description": "기존 앱을 고도화 하기 위한 목표로 제안을 통해 수주된 프로젝트로 5천만원으로 시작된 프로젝트가 연간 운영 건으로 이어졌고, 고객사로부터 큰 칭찬과 감사의 선물을 받았던 성공적인 프로젝트였습니다.",
+      "url": "",
+      "tags": [
+        "제안",
+        "AR/VR",
+        "앱고도화",
+        "PMO"
+      ],
+      "thumb": "thumbs/p13-13.jpg",
+      "images": [
+        "thumbs/p13-13.jpg"
+      ]
+    },
+    {
+      "id": "p10",
+      "category": "Propose & Consulting",
+      "company": "아메바",
+      "title": "SK브로드밴드 BTV Plus & ZEM Kids 리뉴얼",
+      "period": "2019.12 - 2021.02",
+      "type": "Renewal, TV & Mobile App",
+      "summary": "30여 명 투입, 2년간 구도화·운영으로 이어진 대형 제안 프로젝트",
+      "description": "총 3개의 채널을 리뉴얼해야 하고 각 채널마다의 제안을 진행해야 하여 30여 명의 인력이 2주간 투입되어 진행했던 제안이었습니다. 깊이 있는 이해도와 SK브로드밴드가 나아가고자 하는 방향을 정확히 짚어냈고 이후 2년간의 구도화와 운영을 수행하게 된 프로젝트입니다.",
+      "url": "",
+      "tags": [
+        "제안",
+        "TV앱",
+        "모바일앱",
+        "PMO"
+      ],
+      "thumb": "thumbs/p16-16.jpg",
+      "images": [
+        "thumbs/p16-16.jpg"
+      ]
+    },
+    {
+      "id": "p11",
+      "category": "Propose & Consulting",
+      "company": "아메바",
+      "title": "부산은행 가상화폐 앱 UIUX 리뉴얼 컨설팅",
+      "period": "2020.08 - 2020.10",
+      "type": "Renewal, Mobile App",
+      "summary": "블록체인 앱의 플랫폼화를 위한 UX 전략 및 UT 기반 컨설팅",
+      "description": "금융의 서비스들은 거래의 개념에서 플랫폼으로 진화하고 있습니다. 가상 화폐와 지역, 그리고 소상공인과의 상생의 관계형성을 위해 시작된 블록체인 앱의 플랫폼화를 위한 사용자 경험과 비즈니스 방향성 제시 컨설팅.",
+      "url": "",
+      "tags": [
+        "UX컨설팅",
+        "금융",
+        "UT",
+        "블록체인"
+      ],
+      "thumb": "thumbs/p20-20.jpg",
+      "images": [
+        "thumbs/p20-20.jpg"
+      ]
+    },
+    {
+      "id": "p12",
+      "category": "Propose & Consulting",
+      "company": "아메바",
+      "title": "LG전자 생활서비스 상품화 컨설팅",
+      "period": "2020.05 - 2020.08",
+      "type": "Renewal, Mobile App",
+      "summary": "제품 연계 생활 밀착 서비스 플랫폼화를 위한 UX 컨설팅",
+      "description": "제품을 생산하고 판매하는 것에 그치지 않고 제품과 소비자와의 모든 생활이 유기적인 관계를 형성해 나갈 수 있도록 기존 앱 내에 생활 밀착 서비스로 확대하기 위한 컨설팅 프로젝트.",
+      "url": "",
+      "tags": [
+        "UX컨설팅",
+        "생활서비스",
+        "플랫폼",
+        "LG"
+      ],
+      "thumb": "thumbs/p23-23.jpg",
+      "images": [
+        "thumbs/p23-23.jpg"
+      ]
+    },
+    {
+      "id": "p13",
+      "category": "UIUX Build",
+      "company": "피플 (본인 사업자)",
+      "title": "호텔신라 비대면 화상 상담 시스템 (V-Chat 라뷰온)",
+      "period": "2022.02 - 2022.07",
+      "type": "New, PC web, APP, Admin",
+      "summary": "로레알 그룹과 협업한 뷰티 화상 상담 시스템 구축 — 웹어워드 수상",
+      "description": "신라호텔은 대표적인 뷰티 브랜드인 로레알 그룹과 함께 라이브 채팅과 화상 상담 시스템을 통해 뷰티 어드바이저의 역할과 상품을 추천/홍보하기 위한 시스템을 구축. 2022년 9월 오픈, 한국웹어워드 모바일서비스 이노베이션 부문 포함 3개 분야 수상.",
+      "url": "",
+      "tags": [
+        "PM",
+        "화상상담",
+        "모바일앱",
+        "웹어워드수상"
+      ],
+      "thumb": "thumbs/p25-25.jpg",
+      "images": [
+        "thumbs/p25-25.jpg"
+      ]
+    },
+    {
+      "id": "p14",
+      "category": "UIUX Build",
+      "company": "아메바",
+      "title": "멀티캠퍼스 러닝플랫폼 고도화",
+      "period": "2021.08 - 2021.12",
+      "type": "Renewal, PC web, APP, Admin",
+      "summary": "대기업 교육 시스템의 전면 디지털화 플랫폼 고도화 프로젝트",
+      "description": "코로나로 인해 기업의 직원 교육시스템 역시 비대면과 재택업무에 대한 고려가 필요해졌습니다. 멀티캠퍼스는 기존 오프라인 중심 교육 시스템을 전면 리뉴얼하여 디지털화하는 전사 고도화 프로젝트를 진행했습니다.",
+      "url": "",
+      "tags": [
+        "PM",
+        "러닝플랫폼",
+        "교육",
+        "디지털전환"
+      ],
+      "thumb": "thumbs/p28-28.jpg",
+      "images": [
+        "thumbs/p28-28.jpg"
+      ]
+    },
+    {
+      "id": "p15",
+      "category": "UIUX Build",
+      "company": "뱅크웨어글로벌",
+      "title": "친애저축은행 동남아 JTPay 앱 개발",
+      "period": "2018.02 - 2018.06",
+      "type": "신규서비스, 모바일 앱",
+      "summary": "동남아 시장 대상 디지털 페이먼트 프로토타입 앱 개발",
+      "description": "모바일 뱅킹 서비스의 잠재력이 큰 동남아를 대상으로 친애저축은행과 뱅크웨어글로벌이 디지털 페이먼트 시스템을 위한 Pay App 프로토타입 개발. PAY 충전, 송금, 결제, 출금 서비스 및 소상공인 활성화를 위한 디지털 POS 기능.",
+      "url": "",
+      "tags": [
+        "PM",
+        "핀테크",
+        "동남아",
+        "페이먼트"
+      ],
+      "thumb": "thumbs/p30-30.jpg",
+      "images": [
+        "thumbs/p30-30.jpg"
+      ]
+    },
+    {
+      "id": "p16",
+      "category": "Commerce & Marketing",
+      "company": "휴메이저러럭셔리",
+      "title": "폴리폴리·닥터포헤어 이커머스 & 디지털 마케팅",
+      "period": "2016.07 - 2017.08",
+      "type": "구축/운영",
+      "summary": "글로벌 럭셔리 브랜드 한국 온라인몰 구축 및 디지털 마케팅 총괄",
+      "description": "폴리폴리코리아 구축 및 운영, 온라인 MD & 디지털 마케팅 총괄. 샴푸·뷰티 분야 5개 브랜드몰 운영 및 신규 브랜드몰 구축 PM. 판매계획 및 물량계획, 가격 및 커머스 정책 수립 및 운영.",
+      "url": "",
+      "tags": [
+        "이커머스",
+        "디지털마케팅",
+        "브랜드몰",
+        "MD"
+      ],
+      "thumb": "thumbs/p36-36.jpg",
+      "images": [
+        "thumbs/p36-36.jpg"
+      ]
+    },
+    {
+      "id": "p17",
+      "category": "Commerce & Marketing",
+      "company": "서양네트웍스",
+      "title": "유아동 5개 브랜드 통합몰 구축 및 운영",
+      "period": "2013.11 - 2015.04",
+      "type": "구축/운영",
+      "summary": "오프라인 기반 기업의 온라인 비즈니스 핵심사업화 성공 사례",
+      "description": "블루독, 블루독베이비, 밍크뮤, 알로봇, 리틀그라운드 5개 대표브랜드 통합 직영 브랜드몰 구축 성공. 오프라인 시스템(ERP)와 연동 및 기존 프로세스 온라인화로 회사 전체 로직 수정 완료. 가장 빠른 승진과 연봉 상승의 성과.",
+      "url": "",
+      "tags": [
+        "이커머스",
+        "통합몰",
+        "PM",
+        "디지털전환"
+      ],
+      "thumb": "thumbs/p38-38.jpg",
+      "images": [
+        "thumbs/p38-38.jpg"
+      ]
+    },
+    {
+      "id": "p18",
+      "category": "Commerce & Marketing",
+      "company": "프럼 UI/UX 컨설팅",
+      "title": "신라면세점 KR&CN Web/Mobile 차세대 구축",
+      "period": "2015.06 - 2016.04",
+      "type": "Renewal, Web/Mobile",
+      "summary": "웹어워드 대상 수상 — 신라면세점 차세대 UIUX 리뉴얼",
+      "description": "UIUX 컨설팅 및 PL 역할 수행. 중국 UT분석 결과를 기준한 한국 내 중국사이트 개선 전략 분석 및 제안. 2015 웹어워드 코리아 신라 인터넷면세점 중국몰 웹 글로벌서비스 분야 대상 수상, 모바일 웹 쇼핑 분야 최우수상 수상.",
+      "url": "",
+      "tags": [
+        "PL",
+        "면세점",
+        "웹어워드수상",
+        "UX컨설팅"
+      ],
+      "thumb": "thumbs/p31-31.jpg",
+      "images": [
+        "thumbs/p31-31.jpg"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "id": "a1",
+      "year": "2022",
+      "title": "한국웹어워드",
+      "detail": "모바일서비스 이노베이션 부문 포함 3개 분야 수상",
+      "project": "V-Chat 라뷰온 (호텔신라 비대면 화상상담 시스템)"
+    },
+    {
+      "id": "a2",
+      "year": "2015",
+      "title": "웹어워드 코리아 대상",
+      "detail": "웹 글로벌서비스 분야 대상 / 모바일 웹 쇼핑 분야 최우수상",
+      "project": "신라 인터넷면세점 중국몰"
+    }
+  ],
+  "media": [
+    {
+      "id": "m1",
+      "title": "SAC 2025 기술 발표",
+      "url": "https://youtu.be/GorRTrf0yjo?si=NhuBvqwABer-1duV",
+      "videoId": "GorRTrf0yjo",
+      "timestamp": 6420,
+      "description": "솔트룩스 연례 기술 컨퍼런스 발표",
+      "thumbnail": ""
+    },
+    {
+      "id": "m2",
+      "title": "SAC 2023 기술 발표",
+      "url": "https://youtu.be/CLnTP3wJxJ8?si=uoVVMUCM9PYm3US0",
+      "videoId": "CLnTP3wJxJ8",
+      "timestamp": 0,
+      "description": "손비서·미미콘 서비스 소개 발표",
+      "thumbnail": ""
+    },
+    {
+      "id": "m3",
+      "title": "플루닛 브랜드 광고 디렉팅",
+      "url": "https://youtu.be/qAA70qFYFPw?si=l5WR0WhRbS6YSnaw",
+      "videoId": "qAA70qFYFPw",
+      "timestamp": 0,
+      "description": "메인 카피부터 촬영까지 전체 디렉션 수행",
+      "thumbnail": ""
+    }
+  ],
+  "skills": [
+    {
+      "category": "AI & Product",
+      "items": [
+        "AI Service PO/PM",
+        "Product Strategy",
+        "PMF 검증",
+        "Service Architecture",
+        "AI Prompting",
+        "API 기획"
+      ]
+    },
+    {
+      "category": "Planning & UX",
+      "items": [
+        "UIUX Strategy",
+        "UX Consulting",
+        "화면설계",
+        "프로토타이핑",
+        "UT 분석",
+        "CX 전략"
+      ]
+    },
+    {
+      "category": "Tools",
+      "items": [
+        "Figma",
+        "Adobe XD",
+        "Notion",
+        "Jira",
+        "Slack",
+        "Google Analytics"
+      ]
+    },
+    {
+      "category": "Business",
+      "items": [
+        "디지털 마케팅",
+        "이커머스",
+        "사업 전략",
+        "PMO",
+        "제안/PT",
+        "매출 관리"
+      ]
+    }
+  ],
+  "contact": {
+    "email": "biajotti.jh@gmail.com",
+    "linkedin": "",
+    "youtube": "https://youtube.com/@biajottijh"
+  }
+}
