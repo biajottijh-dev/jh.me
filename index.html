@@ -110,31 +110,33 @@
   /* 사진 래퍼 — 그라데이션 마스킹 */
   .hero-photo-wrap {
     position: absolute;
-    top: 0; bottom: 0;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 520px;
+    width: 340px;
+    padding-top: 60px;
     z-index: 1;
     pointer-events: none;
     user-select: none;
     -webkit-mask-image: linear-gradient(
       to bottom,
-      black 0%,
-      black 60%,
-      transparent 100%
+      transparent 0%,
+      black 8%,
+      black 45%,
+      transparent 78%
     );
     mask-image: linear-gradient(
       to bottom,
-      black 0%,
-      black 60%,
-      transparent 100%
+      transparent 0%,
+      black 8%,
+      black 45%,
+      transparent 78%
     );
   }
   .hero-photo {
     width: 100%;
-    height: 100%;
     display: block;
-    object-fit: cover;
+    object-fit: contain;
     object-position: top center;
     filter: grayscale(25%) contrast(1.05) brightness(1.02);
   }
@@ -1591,7 +1593,7 @@ const DATA = {
       "period": "2023.02 - 2025.12",
       "type": "CX총괄",
       "summary": "AI 아바타 및 문서 업로드로 영상을 자동 생성하는 스튜디오 플랫폼",
-      "description": "AI아바타 및 문서 업로드 시 영상 자동생성이 되는 젠웨이브 스튜디오 CX총괄. CX 및 사용성 검증, AI 품질 관리, 매출 및 BD 전략 수립 및 실행. 한라대학교 공동사업 'AI프로페서' CX 담당.",
+      "description": "AI아바타 및 문서 업로드 시 영상 자동생성이 되는 젠웨이브 스튜디오 CX총괄. CX 및 사용성 검증, AI 품질 관리, 매출 및 BD 전략 수립 및 실행. 한라대학교 공동사업 ’AI프로페서’ CX 담당.",
       "url": "https://studio.ploonet.com/main/",
       "tags": [
         "CX",
