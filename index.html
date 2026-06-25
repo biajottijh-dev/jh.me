@@ -107,30 +107,29 @@
     white-space: nowrap;
   }
 
-  /* 사진 래퍼 — 그라데이션 마스킹 */
+  /* 사진 래퍼 — 어깨선이 이름 위에 오도록 */
   .hero-photo-wrap {
     position: absolute;
-    bottom: 0;
+    bottom: 80px;       /* 이름 텍스트 높이만큼 올려서 어깨가 이름 위에 */
     left: 50%;
     transform: translateX(-50%);
-    width: 680px;
-    padding-top: 60px;
+    width: 612px;       /* 680px에서 10% 축소 */
     z-index: 1;
     pointer-events: none;
     user-select: none;
     -webkit-mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      black 8%,
-      black 45%,
-      transparent 78%
+      black 6%,
+      black 72%,
+      transparent 92%
     );
     mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      black 8%,
-      black 45%,
-      transparent 78%
+      black 6%,
+      black 72%,
+      transparent 92%
     );
   }
   .hero-photo {
@@ -1359,10 +1358,6 @@ let DATA = {};
 
 function loadData() {
   DATA = JSON.parse(document.getElementById('site-data').textContent);
-  render();
-}
-
-function loadData() {
   render();
 }
 
