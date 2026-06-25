@@ -2282,11 +2282,7 @@ function observeFadeIns() {
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', loadData);
-} else {
-  loadData();
-}
+loadData();
 </script>
 
 </body>
