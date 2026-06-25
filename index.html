@@ -759,85 +759,62 @@
     flex-direction: column;
     overflow: hidden;
   }
-  /* 가로 드래그 슬라이드 컨테이너 */
+  /* 가로 스크롤 슬라이드 */
   .modal-slides {
     flex: 1;
+    display: flex;
     overflow-x: auto;
     overflow-y: hidden;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 24px 20px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    gap: 0;
   }
   .modal-slides::-webkit-scrollbar { display: none; }
   .modal-slide {
-    flex-shrink: 0;
+    flex: 0 0 100%;
     scroll-snap-align: start;
-    height: calc(100% - 0px);
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #111;
   }
   .modal-slide img {
-    height: 100%;
-    width: auto;
-    max-width: 680px;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
-    display: block;
     border-radius: 6px;
+    display: block;
   }
-  /* 이미지 없을 때 플레이스홀더 */
   .modal-slide-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 12px;
-    color: rgba(255,255,255,0.15);
-    min-width: 400px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; color: rgba(255,255,255,0.15); width: 100%; height: 100%;
   }
   .modal-slide-placeholder span {
-    font-family: var(--font-display);
-    font-size: 48px;
-    font-weight: 800;
-    letter-spacing: 2px;
+    font-family: var(--font-display); font-size: 48px; font-weight: 800;
   }
   .modal-slide-placeholder p {
-    font-family: var(--font-en);
-    font-size: 12px;
-    color: rgba(255,255,255,0.2);
+    font-family: var(--font-en); font-size: 12px; color: rgba(255,255,255,0.2);
   }
-  /* 하단 바 — 스크롤 힌트 */
   .modal-slide-bar {
-    height: 44px;
-    background: rgba(0,0,0,0.5);
+    height: 44px; background: rgba(0,0,0,0.5);
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 20px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    flex-shrink: 0;
+    padding: 0 20px; border-top: 1px solid rgba(255,255,255,0.06); flex-shrink: 0;
   }
-  .modal-slide-dots { display: flex; gap: 6px; }
+  .modal-slide-dots { display: flex; gap: 6px; align-items: center; }
   .slide-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-    cursor: pointer;
-    transition: background 0.2s, width 0.2s;
+    width: 6px; height: 6px; border-radius: 3px;
+    background: rgba(255,255,255,0.2); cursor: pointer;
+    transition: all 0.25s;
   }
-  .slide-dot.active { background: white; width: 16px; border-radius: 3px; }
+  .slide-dot.active { width: 18px; background: white; }
   .modal-slide-nav { display: flex; gap: 8px; }
   .slide-nav-btn {
     width: 28px; height: 28px;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 50%;
-    cursor: pointer;
-    color: white;
-    font-size: 12px;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%; cursor: pointer; color: white; font-size: 12px;
+    display: flex; align-items: center; justify-content: center; transition: background 0.2s;
   }
   .slide-nav-btn:hover { background: rgba(255,255,255,0.25); }
 
@@ -998,7 +975,8 @@
   /* ── TOOLS 섹션 ── */
   .tools-section {
     border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 32px;
+    padding-top: 28px;
+    overflow-x: auto;
   }
   .tools-label {
     font-family: var(--font-en);
@@ -1016,19 +994,14 @@
   }
   /* 아이콘 박스 스타일 — 레퍼런스 이미지 3번 */
   .tool-box {
-    width: 56px; height: 56px;
-    border: 2px solid rgba(255,255,255,0.75);
-    border-radius: 6px;
+    width: 52px; height: 52px;
+    border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-en);
-    font-size: 14px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.85);
-    letter-spacing: -0.3px;
-    transition: all 0.2s;
-    cursor: default;
-    position: relative;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    cursor: default; transition: transform 0.15s; flex-shrink: 0;
   }
+  .tool-box:hover { transform: scale(1.1); }
   .tool-box:hover {
     border-color: white;
     color: white;
@@ -1036,27 +1009,24 @@
   }
   /* 일반 텍스트 태그 (박스 없이) */
   .tool-pill-icon {
-    width: 48px; height: 48px;
+    width: 52px; height: 52px;
     border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-en);
-    font-size: 8px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.7);
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.08);
-    flex-direction: column;
-    gap: 3px;
-    cursor: default;
-    transition: transform 0.15s;
-    white-space: nowrap;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 3px; cursor: default;
+    transition: transform 0.15s; flex-shrink: 0;
+    font-family: var(--font-en); font-size: 8px;
+    font-weight: 600; color: rgba(255,255,255,0.8);
+    white-space: nowrap; overflow: hidden;
   }
+  .tool-pill-icon:hover { transform: scale(1.1); }
   .tool-pill-icon:hover { transform: scale(1.08); }
   .tools-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(8, 52px);
+    grid-template-rows: repeat(2, 52px);
     gap: 10px;
-    align-items: flex-start;
+    align-items: center;
   }
   .tool-pill {
     font-family: var(--font-en);
