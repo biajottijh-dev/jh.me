@@ -122,7 +122,6 @@ let currentSlide = 0;
 let totalSlides = 0;
 
 function openModal(p) {
-  // 좌측 텍스트
   document.getElementById('modalCategory').textContent = p.category;
   document.getElementById('modalTitle').textContent = p.title;
   document.getElementById('modalCompany').textContent = p.company;
@@ -135,7 +134,6 @@ function openModal(p) {
   const lw = document.getElementById('modalLinkWrap');
   lw.innerHTML = p.url ? `<a href="${p.url}" target="_blank" class="modal-link">↗ 사이트 방문</a>` : '';
 
-  // 우측 이미지 슬라이드 구성
   const images = p.images && p.images.length > 0 ? p.images : [];
   const slidesEl = document.getElementById('modalSlides');
   const dotsEl = document.getElementById('modalDots');
@@ -143,7 +141,6 @@ function openModal(p) {
   dotsEl.innerHTML = '';
 
   if (images.length === 0) {
-    // 이미지 없을 때 플레이스홀더
     slidesEl.innerHTML = `
       <div class="modal-slide active">
         <div class="modal-slide-placeholder">
@@ -151,11 +148,10 @@ function openModal(p) {
           <p>산출물 이미지 준비 중</p>
         </div>
       </div>`;
-    dotsEl.innerHTML = '';
   } else {
     images.forEach((src, i) => {
       const slide = document.createElement('div');
-      slide.className = 'modal-slide' + (i === 0 ? ' active' : '');
+      slide.className = 'modal-slide';
       slide.innerHTML = `<img src="${src}" alt="산출물 ${i+1}" loading="lazy">`;
       slidesEl.appendChild(slide);
       const dot = document.createElement('div');
@@ -163,13 +159,27 @@ function openModal(p) {
       dot.onclick = () => goToSlide(i);
       dotsEl.appendChild(dot);
     });
+
+    // 스크롤 시 dot 업데이트
+    slidesEl.onscroll = () => {
+      const w = slidesEl.offsetWidth;
+      if (!w) return;
+      const idx = Math.round(slidesEl.scrollLeft / w);
+      document.querySelectorAll('.slide-dot').forEach((d,i) => {
+        d.classList.toggle('active', i === idx);
+      });
+      currentSlide = idx;
+    };
   }
 
-  currentSlide = 0;
   totalSlides = images.length;
-  // nav 버튼 표시 여부
-  document.getElementById('slidePrev').style.display = totalSlides > 1 ? '' : 'none';
-  document.getElementById('slideNext').style.display = totalSlides > 1 ? '' : 'none';
+  currentSlide = 0;
+  slidesEl.scrollLeft = 0;
+
+  const prevBtn = document.getElementById('slidePrev');
+  const nextBtn = document.getElementById('slideNext');
+  if (prevBtn) prevBtn.style.display = totalSlides > 1 ? '' : 'none';
+  if (nextBtn) nextBtn.style.display = totalSlides > 1 ? '' : 'none';
 
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -177,13 +187,10 @@ function openModal(p) {
 
 function goToSlide(n) {
   if (totalSlides === 0) return;
-  const slides = document.querySelectorAll('.modal-slide');
-  const dots = document.querySelectorAll('.slide-dot');
-  slides[currentSlide].classList.remove('active');
-  if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+  const slidesEl = document.getElementById('modalSlides');
   currentSlide = (n + totalSlides) % totalSlides;
-  slides[currentSlide].classList.add('active');
-  if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+  slidesEl.scrollTo({ left: currentSlide * slidesEl.offsetWidth, behavior: 'smooth' });
+  document.querySelectorAll('.slide-dot').forEach((d,i) => d.classList.toggle('active', i === currentSlide));
 }
 
 function changeSlide(dir) {
