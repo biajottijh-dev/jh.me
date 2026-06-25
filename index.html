@@ -57,8 +57,7 @@
     font-family: var(--font-en);
     font-size: 13px;
     font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    letter-spacing: 0.3px;
     color: var(--text);
     text-decoration: none;
     opacity: 0.6;
@@ -82,7 +81,10 @@
   /* ── HERO ── */
   #hero {
     position: relative;
-    width: 100%; height: 100vh;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 900px;
     display: flex; align-items: flex-end;
     overflow: hidden;
     background: var(--bg);
@@ -108,31 +110,31 @@
   /* 사진 래퍼 — 그라데이션 마스킹 */
   .hero-photo-wrap {
     position: absolute;
-    bottom: 0;
+    top: 0; bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 480px;       /* 원본 대비 약 30% 축소 */
+    width: 520px;
     z-index: 1;
     pointer-events: none;
     user-select: none;
-    /* 하단 그라데이션 페이드 아웃 */
     -webkit-mask-image: linear-gradient(
       to bottom,
       black 0%,
-      black 55%,
+      black 60%,
       transparent 100%
     );
     mask-image: linear-gradient(
       to bottom,
       black 0%,
-      black 55%,
+      black 60%,
       transparent 100%
     );
   }
   .hero-photo {
     width: 100%;
+    height: 100%;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
     object-position: top center;
     filter: grayscale(25%) contrast(1.05) brightness(1.02);
   }
@@ -171,7 +173,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-transform: uppercase;
   }
   .hero-name-en { display: none; }
 
@@ -238,8 +239,7 @@
     font-family: var(--font-en);
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+    letter-spacing: 1.5px;
     color: var(--text-light);
     background: rgba(0,0,0,0.06);
     padding: 6px 14px;
@@ -502,7 +502,6 @@
     background: transparent;
     color: var(--text);
     cursor: pointer;
-    letter-spacing: 0.3px;
     transition: all 0.2s;
   }
   .filter-btn:hover,
@@ -669,7 +668,6 @@
     border-radius: 100px;
     display: inline-block;
     margin-bottom: 20px;
-    text-transform: uppercase;
   }
   .modal-title {
     font-family: var(--font-display);
@@ -700,7 +698,6 @@
     letter-spacing: 1.5px;
     color: rgba(255,255,255,0.3);
     margin-bottom: 4px;
-    text-transform: uppercase;
   }
   .meta-value {
     font-family: var(--font-en);
@@ -1064,7 +1061,6 @@
     letter-spacing: 2px;
     line-height: 0.92;
     margin-bottom: 16px;
-    text-transform: uppercase;
   }
   .contact-sub {
     font-family: var(--font-en);
@@ -1341,8 +1337,8 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="contact-eyebrow">OPEN TO OPPORTUNITIES</div>
-  <div class="contact-headline">LET'S<br>TALK.</div>
+  <div class="contact-eyebrow">Open to Opportunities</div>
+  <div class="contact-headline">Let's<br>Talk.</div>
   <div class="contact-sub" id="contactSub">새로운 도전과 협업을 환영합니다.</div>
   <a class="contact-email-btn" id="contactEmailBtn" href="">
     <span>✉</span> <span id="contactEmailText"></span>
@@ -2280,7 +2276,11 @@ function observeFadeIns() {
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 }
 
-loadData();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadData);
+} else {
+  loadData();
+}
 </script>
 </body>
 </html>
