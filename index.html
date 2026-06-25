@@ -23,1130 +23,210 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-  body {
-    font-family: var(--font-body);
-    background: var(--bg);
-    color: var(--text);
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
+  /* NAV */
   nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 20px 48px;
     background: rgba(237,237,237,0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   }
-  .nav-logo {
-    font-family: var(--font-display);
-    font-size: 22px;
-    letter-spacing: 2px;
-    color: var(--text);
-    text-decoration: none;
-  }
-  .nav-links {
-    display: flex; gap: 36px; list-style: none;
-  }
-  .nav-links a {
-    font-family: var(--font-en);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    color: var(--text);
-    text-decoration: none;
-    opacity: 0.6;
-    transition: opacity 0.2s;
-  }
+  .nav-logo { font-family: var(--font-display); font-size: 22px; letter-spacing: 2px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-family: var(--font-en); font-size: 13px; font-weight: 500; letter-spacing: 0.3px; color: var(--text); text-decoration: none; opacity: 0.6; transition: opacity 0.2s; }
   .nav-links a:hover { opacity: 1; }
-  .nav-contact {
-    font-family: var(--font-en);
-    font-size: 13px;
-    font-weight: 600;
-    padding: 10px 24px;
-    background: var(--bg-dark);
-    color: var(--text-white);
-    border-radius: 100px;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: opacity 0.2s;
-  }
+  .nav-contact { font-family: var(--font-en); font-size: 13px; font-weight: 600; padding: 10px 24px; background: var(--bg-dark); color: var(--text-white); border-radius: 100px; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.2s; }
   .nav-contact:hover { opacity: 0.8; }
 
-  /* ── HERO ── */
-  #hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 600px;
-    max-height: 900px;
-    display: flex; align-items: flex-end;
-    overflow: hidden;
-    background: var(--bg);
-  }
-
-  /* 배경 대형 텍스트 */
-  .hero-bg-text {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    font-family: var(--font-display);
-    font-size: clamp(100px, 18vw, 260px);
-    letter-spacing: 8px;
-    color: rgba(0,0,0,0.055);
-    z-index: 0;
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-    white-space: nowrap;
-  }
-
-  /* 사진 래퍼 — 어깨선이 이름 위에 오도록 */
-  .hero-photo-wrap {
-    position: absolute;
-    bottom: 80px;       /* 이름 텍스트 높이만큼 올려서 어깨가 이름 위에 */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 612px;       /* 680px에서 10% 축소 */
-    z-index: 1;
-    pointer-events: none;
-    user-select: none;
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      black 6%,
-      black 72%,
-      transparent 92%
-    );
-    mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      black 6%,
-      black 72%,
-      transparent 92%
-    );
-  }
-  .hero-photo {
-    width: 100%;
-    display: block;
-    object-fit: contain;
-    object-position: top center;
-    filter: grayscale(25%) contrast(1.05) brightness(1.02);
-  }
-
-  /* 이름 블록 — 하단 중앙 */
-  .hero-name-block {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    z-index: 3;
-    text-align: center;
-    padding-bottom: 32px;
-  }
-  .hero-greeting {
-    font-family: var(--font-en);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-light);
-    background: rgba(255,255,255,0.85);
-    padding: 6px 16px;
-    border-radius: 100px;
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(0,0,0,0.06);
-    margin-bottom: 10px;
-    display: inline-block;
-    letter-spacing: 0.5px;
-  }
-  /* 영문 이름 — Barlow Condensed Black 초대형 */
-  .hero-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(72px, 11vw, 160px);
-    font-weight: 900;
-    letter-spacing: 1px;
-    line-height: 0.9;
-    color: var(--text);
-    background: linear-gradient(to bottom, #111 55%, rgba(17,17,17,0.5) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero-name-en { display: none; }
-
-  /* Let's work together 뱃지 — 우하단 */
-  .hero-cta {
-    position: absolute;
-    bottom: 48px; right: 48px;
-    z-index: 3;
-    font-family: var(--font-en);
-    font-size: 12px;
-    font-weight: 500;
-    background: rgba(255,255,255,0.85);
-    padding: 8px 18px;
-    border-radius: 100px;
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(0,0,0,0.06);
-    color: var(--text);
-    letter-spacing: 0.3px;
-  }
-
-  /* 키워드 태그 — 인물 좌우 배치 */
-  .hero-keywords {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .keyword-tag {
-    position: absolute;
-    font-family: var(--font-en);
-    font-size: 12px;
-    font-weight: 500;
-    background: rgba(255,255,255,0.82);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(0,0,0,0.07);
-    padding: 9px 18px;
-    border-radius: 100px;
-    color: var(--text);
-    letter-spacing: 0.2px;
-    white-space: nowrap;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-  /* 왼쪽 4개 */
+  /* HERO */
+  #hero { position: relative; width: 100%; height: 100vh; min-height: 600px; max-height: 900px; display: flex; align-items: flex-end; overflow: hidden; background: var(--bg); }
+  .hero-bg-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; font-family: var(--font-display); font-size: clamp(100px, 18vw, 260px); letter-spacing: 8px; color: rgba(0,0,0,0.055); z-index: 0; line-height: 1; pointer-events: none; user-select: none; white-space: nowrap; }
+  .hero-photo-wrap { position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%); width: 612px; z-index: 1; pointer-events: none; user-select: none; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 72%, transparent 92%); mask-image: linear-gradient(to bottom, transparent 0%, black 6%, black 72%, transparent 92%); }
+  .hero-photo { width: 100%; display: block; object-fit: contain; object-position: top center; filter: grayscale(25%) contrast(1.05) brightness(1.02); }
+  .hero-name-block { position: absolute; bottom: 0; left: 0; right: 0; z-index: 3; text-align: center; padding-bottom: 32px; }
+  .hero-greeting { font-family: var(--font-en); font-size: 12px; font-weight: 500; color: var(--text-light); background: rgba(255,255,255,0.85); padding: 6px 16px; border-radius: 100px; backdrop-filter: blur(8px); border: 1px solid rgba(0,0,0,0.06); margin-bottom: 10px; display: inline-block; letter-spacing: 0.5px; }
+  .hero-name { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(72px, 11vw, 160px); font-weight: 900; letter-spacing: 1px; line-height: 0.9; color: var(--text); background: linear-gradient(to bottom, #111 55%, rgba(17,17,17,0.5) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-cta { position: absolute; bottom: 48px; right: 48px; z-index: 3; font-family: var(--font-en); font-size: 12px; font-weight: 500; background: rgba(255,255,255,0.85); padding: 8px 18px; border-radius: 100px; backdrop-filter: blur(8px); border: 1px solid rgba(0,0,0,0.06); color: var(--text); letter-spacing: 0.3px; }
+  .hero-keywords { position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; }
+  .keyword-tag { position: absolute; font-family: var(--font-en); font-size: 12px; font-weight: 500; background: rgba(255,255,255,0.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.07); padding: 9px 18px; border-radius: 100px; color: var(--text); letter-spacing: 0.2px; white-space: nowrap; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
   .keyword-tag:nth-child(1) { top: 20%; left: 7%; }
   .keyword-tag:nth-child(2) { top: 30%; left: 5%; }
   .keyword-tag:nth-child(3) { top: 41%; left: 7%; }
   .keyword-tag:nth-child(4) { top: 53%; left: 5%; }
-  /* 오른쪽 4개 */
   .keyword-tag:nth-child(5) { top: 20%; right: 7%; }
   .keyword-tag:nth-child(6) { top: 30%; right: 5%; }
   .keyword-tag:nth-child(7) { top: 41%; right: 7%; }
   .keyword-tag:nth-child(8) { top: 53%; right: 5%; }
 
-  /* ── SECTION COMMON ── */
-  section {
-    padding: 64px 48px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .section-label {
-    font-family: var(--font-en);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    color: var(--text-light);
-    background: rgba(0,0,0,0.06);
-    padding: 6px 14px;
-    border-radius: 100px;
-    display: inline-block;
-    margin-bottom: 28px;
-    align-self: flex-start;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(36px, 5vw, 68px);
-    letter-spacing: 1px;
-    line-height: 1;
-    margin-bottom: 12px;
-  }
-  .section-title em {
-    font-style: normal;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-  }
+  /* SECTION COMMON */
+  section { padding: 64px 48px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+  .section-label { font-family: var(--font-en); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: var(--text-light); background: rgba(0,0,0,0.06); padding: 6px 14px; border-radius: 100px; display: inline-block; margin-bottom: 28px; align-self: flex-start; }
+  .section-title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 68px); letter-spacing: 1px; line-height: 1; margin-bottom: 12px; }
 
-  /* ── ABOUT ── */
+  /* ABOUT */
   #about { background: var(--bg); }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: 56px;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  .about-photo-wrap {
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
-  }
-  .about-photo {
-    width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-    object-position: top center;
-    filter: grayscale(15%) contrast(1.05);
-    border-radius: 4px;
-    display: block;
-    /* 하단 그라데이션 페이드 — 배경색(#EDEDED)과 자연스럽게 섞임 */
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      black 0%,
-      black 60%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to bottom,
-      black 0%,
-      black 60%,
-      transparent 100%
-    );
-  }
-  .about-philosophy {
-    position: absolute;
-    bottom: 24px; left: 24px; right: 24px;
-    background: rgba(17,17,17,0.85);
-    backdrop-filter: blur(8px);
-    padding: 20px 24px;
-    border-radius: 4px;
-  }
-  .about-philosophy .quote-mark {
-    font-family: var(--font-display);
-    font-size: 28px;
-    color: rgba(255,255,255,0.4);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .about-philosophy p {
-    font-family: var(--font-body);
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-white);
-    line-height: 1.6;
-  }
-  .about-content { }
-  .about-title {
-    font-family: var(--font-display);
-    font-size: clamp(36px, 5vw, 64px);
-    letter-spacing: 1px;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .about-subtitle {
-    font-family: var(--font-en);
-    font-size: 15px;
-    font-weight: 400;
-    color: var(--text-light);
-    margin-bottom: 20px;
-  }
-  .about-text {
-    font-size: 14px;
-    line-height: 1.8;
-    color: #444;
-    margin-bottom: 10px;
-  }
-  .about-text-en {
-    font-family: var(--font-en);
-    font-size: 13px;
-    line-height: 1.7;
-    color: #999;
-    font-style: normal;
-    margin-bottom: 24px;
-  }
-  .about-stats {
-    display: flex; gap: 36px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-  }
-  .stat { }
-  .stat-num {
-    font-family: var(--font-display);
-    font-size: 36px;
-    letter-spacing: 1px;
-    line-height: 1;
-  }
-  .stat-label {
-    font-family: var(--font-en);
-    font-size: 11px;
-    color: var(--text-light);
-    letter-spacing: 1px;
-    margin-top: 3px;
-  }
-  .about-links {
-    display: flex; gap: 12px; margin-top: 20px;
-  }
-  .about-link {
-    font-family: var(--font-en);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 100px;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: all 0.2s;
-  }
-  .about-link.primary {
-    background: var(--bg-dark);
-    color: white;
-  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 56px; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; }
+  .about-photo-wrap { position: relative; overflow: hidden; border-radius: 4px; }
+  .about-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center; filter: grayscale(15%) contrast(1.05); border-radius: 4px; display: block; -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%); mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%); }
+  .about-philosophy { position: absolute; bottom: 24px; left: 24px; right: 24px; background: rgba(17,17,17,0.85); backdrop-filter: blur(8px); padding: 20px 24px; border-radius: 4px; }
+  .about-philosophy .quote-mark { font-family: var(--font-display); font-size: 28px; color: rgba(255,255,255,0.4); line-height: 1; margin-bottom: 4px; }
+  .about-philosophy p { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--text-white); line-height: 1.6; }
+  .about-title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 64px); letter-spacing: 1px; line-height: 1; margin-bottom: 8px; }
+  .about-subtitle { font-family: var(--font-en); font-size: 15px; font-weight: 400; color: var(--text-light); margin-bottom: 20px; }
+  .about-text { font-size: 14px; line-height: 1.8; color: #444; margin-bottom: 10px; }
+  .about-text-en { font-family: var(--font-en); font-size: 13px; line-height: 1.7; color: #999; margin-bottom: 24px; }
+  .about-stats { display: flex; gap: 36px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .stat-num { font-family: var(--font-display); font-size: 36px; letter-spacing: 1px; line-height: 1; }
+  .stat-label { font-family: var(--font-en); font-size: 11px; color: var(--text-light); letter-spacing: 1px; margin-top: 3px; }
+  .about-links { display: flex; gap: 12px; margin-top: 20px; }
+  .about-link { font-family: var(--font-en); font-size: 12px; font-weight: 600; padding: 10px 20px; border-radius: 100px; text-decoration: none; letter-spacing: 0.5px; transition: all 0.2s; }
+  .about-link.primary { background: var(--bg-dark); color: white; }
   .about-link.primary:hover { opacity: 0.8; }
-  .about-link.secondary {
-    background: transparent;
-    border: 1px solid rgba(0,0,0,0.2);
-    color: var(--text);
-  }
+  .about-link.secondary { background: transparent; border: 1px solid rgba(0,0,0,0.2); color: var(--text); }
   .about-link.secondary:hover { background: rgba(0,0,0,0.05); }
 
-  /* ── CAREER ── */
+  /* CAREER */
   #career { background: var(--bg-dark); color: var(--text-white); }
   #career .section-label { color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08); }
   #career .section-title { color: white; }
-  .career-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.8fr;
-    gap: 60px;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  .career-intro {
-    position: sticky;
-    top: 80px;
-    align-self: start;
-  }
-  .career-intro-text {
-    font-family: var(--font-en);
-    font-size: 13px;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.5);
-    margin-top: 16px;
-  }
-  .career-years {
-    font-family: var(--font-display);
-    font-size: 64px;
-    color: rgba(255,255,255,0.08);
-    line-height: 1;
-    margin-top: 24px;
-  }
+  .career-layout { display: grid; grid-template-columns: 1fr 1.8fr; gap: 60px; max-width: 1200px; margin: 0 auto; width: 100%; }
+  .career-intro { position: sticky; top: 80px; align-self: start; }
+  .career-intro-text { font-family: var(--font-en); font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.5); margin-top: 16px; }
+  .career-years { font-family: var(--font-display); font-size: 64px; color: rgba(255,255,255,0.08); line-height: 1; margin-top: 24px; }
   .timeline { position: relative; }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 8px; bottom: 0;
-    width: 1px;
-    background: rgba(255,255,255,0.1);
-  }
-  .timeline-item {
-    position: relative;
-    padding: 0 0 28px 32px;
-    cursor: default;
-  }
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -4px; top: 8px;
-    width: 9px; height: 9px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-    border: 1px solid rgba(255,255,255,0.4);
-    transition: background 0.2s;
-  }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: rgba(255,255,255,0.1); }
+  .timeline-item { position: relative; padding: 0 0 28px 32px; cursor: default; }
+  .timeline-item::before { content: ''; position: absolute; left: -4px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); transition: background 0.2s; }
   .timeline-item:hover::before { background: white; }
-  .timeline-period {
-    font-family: var(--font-en);
-    font-size: 11px;
-    letter-spacing: 1px;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 6px;
-  }
-  .timeline-company {
-    font-family: var(--font-en);
-    font-size: 17px;
-    font-weight: 600;
-    color: white;
-    margin-bottom: 4px;
-  }
-  .timeline-role {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.6;
-  }
-  .timeline-badge {
-    display: inline-block;
-    font-family: var(--font-en);
-    font-size: 10px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 100px;
-    background: rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.4);
-    margin-top: 8px;
-    letter-spacing: 0.5px;
-  }
+  .timeline-period { font-family: var(--font-en); font-size: 11px; letter-spacing: 1px; color: rgba(255,255,255,0.3); margin-bottom: 6px; }
+  .timeline-company { font-family: var(--font-en); font-size: 17px; font-weight: 600; color: white; margin-bottom: 4px; }
+  .timeline-role { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+  .timeline-badge { display: inline-block; font-family: var(--font-en); font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 100px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); margin-top: 8px; letter-spacing: 0.5px; }
 
-  /* ── PROJECTS ── */
+  /* PROJECTS */
   #projects { background: var(--bg); }
-  .projects-header {
-    max-width: 1200px;
-    margin: 0 auto 36px;
-    width: 100%;
-  }
-  .portfolio-desc {
-    font-size: 15px;
-    line-height: 1.7;
-    color: #666;
-    max-width: 620px;
-    margin: 16px 0 32px;
-    font-family: var(--font-body);
-  }
-  .project-filters {
-    display: flex; gap: 8px; flex-wrap: wrap;
-    margin-top: 32px;
-  }
-  .filter-btn {
-    font-family: var(--font-en);
-    font-size: 12px;
-    font-weight: 500;
-    padding: 8px 20px;
-    border-radius: 100px;
-    border: 1px solid rgba(0,0,0,0.15);
-    background: transparent;
-    color: var(--text);
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .filter-btn:hover,
-  .filter-btn.active {
-    background: var(--bg-dark);
-    color: white;
-    border-color: var(--bg-dark);
-  }
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  .project-card {
-    background: var(--card-bg);
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.25s, box-shadow 0.25s;
-    border: 1px solid var(--border);
-  }
-  .project-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-  }
+  .projects-header { max-width: 1200px; margin: 0 auto 36px; width: 100%; }
+  .portfolio-desc { font-size: 15px; line-height: 1.7; color: #666; max-width: 620px; margin: 16px 0 32px; }
+  .project-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 32px; }
+  .filter-btn { font-family: var(--font-en); font-size: 12px; font-weight: 500; padding: 8px 20px; border-radius: 100px; border: 1px solid rgba(0,0,0,0.15); background: transparent; color: var(--text); cursor: pointer; transition: all 0.2s; }
+  .filter-btn:hover, .filter-btn.active { background: var(--bg-dark); color: white; border-color: var(--bg-dark); }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; width: 100%; }
+  .project-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.25s, box-shadow 0.25s; border: 1px solid var(--border); }
+  .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
   .project-card.hidden { display: none; }
-  .card-thumb {
-    width: 100%; aspect-ratio: 16/9;
-    background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .card-thumb-label {
-    font-family: var(--font-display);
-    font-size: 28px;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.15);
-    text-align: center;
-    padding: 16px;
-  }
-  .card-category-badge {
-    position: absolute;
-    top: 12px; left: 12px;
-    font-family: var(--font-en);
-    font-size: 10px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 100px;
-    background: rgba(255,255,255,0.15);
-    color: white;
-    letter-spacing: 0.5px;
-  }
+  .card-thumb { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .card-thumb-label { font-family: var(--font-display); font-size: 28px; letter-spacing: 2px; color: rgba(255,255,255,0.15); text-align: center; padding: 16px; }
+  .card-category-badge { position: absolute; top: 12px; left: 12px; font-family: var(--font-en); font-size: 10px; font-weight: 600; padding: 4px 10px; border-radius: 100px; background: rgba(255,255,255,0.15); color: white; letter-spacing: 0.5px; }
   .card-body { padding: 24px; }
-  .card-company {
-    font-family: var(--font-en);
-    font-size: 11px;
-    color: var(--text-light);
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
-  }
-  .card-title {
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 10px;
-    color: var(--text);
-  }
-  .card-summary {
-    font-size: 12px;
-    color: #777;
-    line-height: 1.7;
-    margin-bottom: 16px;
-  }
-  .card-tags {
-    display: flex; gap: 6px; flex-wrap: wrap;
-  }
-  .card-tag {
-    font-family: var(--font-en);
-    font-size: 10px;
-    font-weight: 500;
-    padding: 3px 10px;
-    border-radius: 100px;
-    background: rgba(0,0,0,0.06);
-    color: #555;
-  }
-  .card-period {
-    font-family: var(--font-en);
-    font-size: 10px;
-    color: var(--text-light);
-    margin-top: 12px;
-  }
+  .card-company { font-family: var(--font-en); font-size: 11px; color: var(--text-light); letter-spacing: 0.5px; margin-bottom: 8px; }
+  .card-title { font-size: 15px; font-weight: 700; line-height: 1.4; margin-bottom: 10px; color: var(--text); }
+  .card-summary { font-size: 12px; color: #777; line-height: 1.7; margin-bottom: 16px; }
+  .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .card-tag { font-family: var(--font-en); font-size: 10px; font-weight: 500; padding: 3px 10px; border-radius: 100px; background: rgba(0,0,0,0.06); color: #555; }
 
-  /* ── PORTFOLIO MODAL — 좌우 분할 ── */
-  .modal-overlay {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.75);
-    z-index: 200;
-    display: flex; align-items: center; justify-content: center;
-    padding: 24px;
-    opacity: 0; pointer-events: none;
-    transition: opacity 0.3s;
-    backdrop-filter: blur(6px);
-  }
+  /* MODAL */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(6px); }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
-
-  /* 모달 컨테이너 — 좌우 2열 */
-  .modal {
-    display: grid;
-    grid-template-columns: 420px 1fr;
-    background: #fff;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 1100px;
-    height: 80vh;
-    max-height: 700px;
-    overflow: hidden;
-    position: relative;
-    transform: translateY(20px);
-    transition: transform 0.3s;
-  }
+  .modal { display: grid; grid-template-columns: 420px 1fr; background: #fff; border-radius: 12px; width: 100%; max-width: 1100px; height: 80vh; max-height: 700px; overflow: hidden; position: relative; transform: translateY(20px); transition: transform 0.3s; }
   .modal-overlay.open .modal { transform: translateY(0); }
-
-  /* 닫기 버튼 */
-  .modal-close {
-    position: absolute;
-    top: 20px; right: 20px;
-    width: 36px; height: 36px;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 14px;
-    color: white;
-    display: flex; align-items: center; justify-content: center;
-    z-index: 10;
-    transition: background 0.2s;
-  }
+  .modal-close { position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 50%; cursor: pointer; font-size: 14px; color: white; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.2s; }
   .modal-close:hover { background: rgba(255,255,255,0.3); }
-
-  /* 좌측 텍스트 패널 */
-  .modal-left {
-    background: var(--bg-dark);
-    color: white;
-    padding: 0;
-    overflow-y: auto;
-    display: flex; flex-direction: column;
-  }
-  .modal-left-inner {
-    padding: 48px 40px 40px;
-    flex: 1;
-  }
-  .modal-category {
-    font-family: var(--font-en);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2.5px;
-    color: rgba(255,255,255,0.35);
-    background: rgba(255,255,255,0.08);
-    padding: 4px 12px;
-    border-radius: 100px;
-    display: inline-block;
-    margin-bottom: 20px;
-  }
-  .modal-title {
-    font-family: var(--font-display);
-    font-size: clamp(18px, 2vw, 26px);
-    font-weight: 800;
-    color: white;
-    line-height: 1.35;
-    margin-bottom: 12px;
-    letter-spacing: 0.2px;
-    word-break: keep-all;
-    overflow-wrap: break-word;
-  }
-  .modal-company {
-    font-family: var(--font-en);
-    font-size: 13px;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 28px;
-  }
-  .modal-meta {
-    display: flex; gap: 20px; flex-wrap: wrap;
-    margin-bottom: 24px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-  }
-  .meta-item { }
-  .meta-label {
-    font-family: var(--font-en);
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 4px;
-  }
-  .meta-value {
-    font-family: var(--font-en);
-    font-size: 12px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.7);
-  }
-  .modal-desc {
-    font-size: 13px;
-    line-height: 1.85;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 20px;
-  }
-  .modal-tags {
-    display: flex; gap: 6px; flex-wrap: wrap;
-    margin-bottom: 24px;
-  }
-  .modal-tag {
-    font-family: var(--font-en);
-    font-size: 10px;
-    font-weight: 500;
-    padding: 4px 12px;
-    border-radius: 100px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.55);
-  }
-  .modal-link {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: var(--font-en);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 100px;
-    background: white;
-    color: #111;
-    text-decoration: none;
-    transition: opacity 0.2s;
-    letter-spacing: 0.3px;
-  }
+  .modal-left { background: var(--bg-dark); color: white; overflow-y: auto; display: flex; flex-direction: column; }
+  .modal-left-inner { padding: 48px 40px 40px; flex: 1; }
+  .modal-category { font-family: var(--font-en); font-size: 10px; font-weight: 600; letter-spacing: 2.5px; color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.08); padding: 4px 12px; border-radius: 100px; display: inline-block; margin-bottom: 20px; }
+  .modal-title { font-family: var(--font-display); font-size: clamp(18px, 2vw, 26px); font-weight: 800; color: white; line-height: 1.35; margin-bottom: 12px; letter-spacing: 0.2px; word-break: keep-all; }
+  .modal-company { font-family: var(--font-en); font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 28px; }
+  .modal-meta { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .meta-label { font-family: var(--font-en); font-size: 9px; font-weight: 600; letter-spacing: 1.5px; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+  .meta-value { font-family: var(--font-en); font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.7); }
+  .modal-desc { font-size: 13px; line-height: 1.85; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+  .modal-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 24px; }
+  .modal-tag { font-family: var(--font-en); font-size: 10px; font-weight: 500; padding: 4px 12px; border-radius: 100px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.55); }
+  .modal-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-en); font-size: 12px; font-weight: 600; padding: 10px 20px; border-radius: 100px; background: white; color: #111; text-decoration: none; transition: opacity 0.2s; }
   .modal-link:hover { opacity: 0.85; }
-
-  /* 우측 이미지 패널 */
-  .modal-right {
-    background: #111;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  /* 가로 스크롤 슬라이드 */
-  .modal-slides {
-    flex: 1;
-    display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    gap: 0;
-  }
+  .modal-right { background: #111; position: relative; display: flex; flex-direction: column; overflow: hidden; }
+  .modal-slides { flex: 1; display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .modal-slides::-webkit-scrollbar { display: none; }
-  .modal-slide {
-    flex: 0 0 100%;
-    scroll-snap-align: start;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: #111;
-  }
-  .modal-slide img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    border-radius: 6px;
-    display: block;
-  }
-  .modal-slide-placeholder {
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 12px; color: rgba(255,255,255,0.15); width: 100%; height: 100%;
-  }
-  .modal-slide-placeholder span {
-    font-family: var(--font-display); font-size: 48px; font-weight: 800;
-  }
-  .modal-slide-placeholder p {
-    font-family: var(--font-en); font-size: 12px; color: rgba(255,255,255,0.2);
-  }
-  .modal-slide-bar {
-    height: 44px; background: rgba(0,0,0,0.5);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 20px; border-top: 1px solid rgba(255,255,255,0.06); flex-shrink: 0;
-  }
+  .modal-slide { flex: 0 0 100%; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 20px; background: #111; }
+  .modal-slide img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; display: block; }
+  .modal-slide-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: rgba(255,255,255,0.15); width: 100%; height: 100%; }
+  .modal-slide-placeholder span { font-family: var(--font-display); font-size: 48px; font-weight: 800; }
+  .modal-slide-placeholder p { font-family: var(--font-en); font-size: 12px; color: rgba(255,255,255,0.2); }
+  .modal-slide-bar { height: 44px; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-top: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
   .modal-slide-dots { display: flex; gap: 6px; align-items: center; }
-  .slide-dot {
-    width: 6px; height: 6px; border-radius: 3px;
-    background: rgba(255,255,255,0.2); cursor: pointer;
-    transition: all 0.25s;
-  }
+  .slide-dot { width: 6px; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.2); cursor: pointer; transition: all 0.25s; }
   .slide-dot.active { width: 18px; background: white; }
   .modal-slide-nav { display: flex; gap: 8px; }
-  .slide-nav-btn {
-    width: 28px; height: 28px;
-    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 50%; cursor: pointer; color: white; font-size: 12px;
-    display: flex; align-items: center; justify-content: center; transition: background 0.2s;
-  }
+  .slide-nav-btn { width: 28px; height: 28px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; cursor: pointer; color: white; font-size: 12px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
   .slide-nav-btn:hover { background: rgba(255,255,255,0.25); }
 
-  /* ── MEDIA & AWARDS ── */
+  /* MEDIA & AWARDS */
   #media { background: var(--bg); }
-  .media-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  .media-title-block { margin-bottom: 28px; }
-
-  /* 썸네일 카드 리스트 */
+  .media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 1200px; margin: 0 auto; width: 100%; }
   .media-list { display: flex; flex-direction: column; gap: 12px; }
-  .media-item {
-    display: flex; align-items: center; gap: 0;
-    background: var(--card-bg);
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    text-decoration: none;
-    color: var(--text);
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .media-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-  }
-  /* 썸네일 영역 */
-  .media-thumb {
-    width: 140px;
-    height: 80px;
-    flex-shrink: 0;
-    position: relative;
-    overflow: hidden;
-    background: #222;
-  }
-  .media-thumb img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  /* 재생 오버레이 */
-  .media-thumb-overlay {
-    position: absolute; inset: 0;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(0,0,0,0.3);
-    transition: background 0.2s;
-  }
+  .media-item { display: flex; align-items: center; background: var(--card-bg); border-radius: 10px; border: 1px solid var(--border); text-decoration: none; color: var(--text); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+  .media-item:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+  .media-thumb { width: 140px; height: 80px; flex-shrink: 0; position: relative; overflow: hidden; background: #222; }
+  .media-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .media-thumb-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); transition: background 0.2s; }
   .media-item:hover .media-thumb-overlay { background: rgba(0,0,0,0.15); }
-  .media-play-btn {
-    width: 32px; height: 32px;
-    background: rgba(255,255,255,0.92);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px;
-    color: #111;
-    padding-left: 2px;
-  }
-  /* 텍스트 영역 */
-  .media-info {
-    flex: 1;
-    padding: 12px 16px;
-  }
-  .media-item-title {
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 4px;
-    line-height: 1.3;
-  }
-  .media-item-desc {
-    font-family: var(--font-en);
-    font-size: 11px;
-    color: var(--text-light);
-  }
-  .media-arrow {
-    font-size: 16px;
-    color: var(--text-light);
-    flex-shrink: 0;
-    padding-right: 16px;
-  }
+  .media-play-btn { width: 32px; height: 32px; background: rgba(255,255,255,0.92); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #111; padding-left: 2px; }
+  .media-info { flex: 1; padding: 12px 16px; }
+  .media-item-title { font-family: var(--font-display); font-size: 13px; font-weight: 700; margin-bottom: 4px; line-height: 1.3; }
+  .media-item-desc { font-family: var(--font-en); font-size: 11px; color: var(--text-light); }
+  .media-arrow { font-size: 16px; color: var(--text-light); flex-shrink: 0; padding-right: 16px; }
   .awards-list { display: flex; flex-direction: column; gap: 10px; }
-  .award-item {
-    padding: 18px 20px;
-    background: var(--bg-dark);
-    border-radius: 8px;
-    color: white;
-  }
-  .award-year {
-    font-family: var(--font-display);
-    font-size: 32px;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.2);
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .award-title {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-  .award-detail {
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.6;
-    margin-bottom: 8px;
-  }
-  .award-project {
-    font-family: var(--font-en);
-    font-size: 11px;
-    color: rgba(255,255,255,0.3);
-    letter-spacing: 0.5px;
-  }
+  .award-item { padding: 18px 20px; background: var(--bg-dark); border-radius: 8px; color: white; }
+  .award-year { font-family: var(--font-display); font-size: 32px; letter-spacing: 2px; color: rgba(255,255,255,0.2); line-height: 1; margin-bottom: 8px; }
+  .award-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .award-detail { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 8px; }
+  .award-project { font-family: var(--font-en); font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.5px; }
 
-  /* ── SKILLS ── */
+  /* SKILLS */
   #skills { background: var(--bg-dark); color: white; padding: 64px 48px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
   #skills .section-label { color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08); }
   #skills .section-title { color: white; }
-
-  .skills-layout {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-bottom: 40px;
-  }
-  .skill-group { }
-  .skill-group-title {
-    font-family: var(--font-en);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
+  .skills-layout { max-width: 1200px; margin: 0 auto; width: 100%; }
+  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px; }
+  .skill-group-title { font-family: var(--font-en); font-size: 11px; font-weight: 600; letter-spacing: 2px; color: rgba(255,255,255,0.3); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); }
   .skill-items { display: flex; flex-direction: column; gap: 10px; }
-  .skill-item {
-    font-size: 13px;
-    color: rgba(255,255,255,0.7);
-    padding: 10px 16px;
-    background: rgba(255,255,255,0.05);
-    border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.06);
-    transition: all 0.2s;
-  }
+  .skill-item { font-size: 13px; color: rgba(255,255,255,0.7); padding: 10px 16px; background: rgba(255,255,255,0.05); border-radius: 6px; border: 1px solid rgba(255,255,255,0.06); transition: all 0.2s; }
   .skill-item:hover { background: rgba(255,255,255,0.1); color: white; }
 
-  /* ── TOOLS 섹션 ── */
-  .tools-section {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 28px;
-    overflow-x: auto;
-  }
-  .tools-label {
-    font-family: var(--font-en);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: rgba(255,255,255,0.35);
-    margin-bottom: 20px;
-  }
-  .tools-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    align-items: center;
-  }
-  /* 아이콘 박스 스타일 — 레퍼런스 이미지 3번 */
-  .tool-box {
-    width: 52px; height: 52px;
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.08);
-    cursor: default; transition: transform 0.15s; flex-shrink: 0;
-  }
-  .tool-box:hover { transform: scale(1.1); }
-  .tool-box:hover {
-    border-color: white;
-    color: white;
-    background: rgba(255,255,255,0.06);
-  }
-  /* 일반 텍스트 태그 (박스 없이) */
-  .tool-pill-icon {
-    width: 52px; height: 52px;
-    border-radius: 12px;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 3px; cursor: default;
-    transition: transform 0.15s; flex-shrink: 0;
-    font-family: var(--font-en); font-size: 8px;
-    font-weight: 600; color: rgba(255,255,255,0.8);
-    white-space: nowrap; overflow: hidden;
-  }
+  /* TOOLS */
+  .tools-section { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px; }
+  .tools-label { font-family: var(--font-en); font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+  .tools-grid { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .tool-box { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); cursor: default; transition: transform 0.15s; flex-shrink: 0; }
+  .tool-box:hover { transform: scale(1.1); border-color: rgba(255,255,255,0.3); }
+  .tool-pill-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; cursor: default; transition: transform 0.15s; flex-shrink: 0; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); font-family: var(--font-en); font-size: 8px; font-weight: 600; color: rgba(255,255,255,0.8); white-space: nowrap; overflow: hidden; }
   .tool-pill-icon:hover { transform: scale(1.1); }
-  .tool-pill-icon:hover { transform: scale(1.08); }
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(8, 52px);
-    grid-template-rows: repeat(2, 52px);
-    gap: 10px;
-    align-items: center;
-  }
-  .tool-pill {
-    font-family: var(--font-en);
-    font-size: 12px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.5);
-    padding: 10px 18px;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 6px;
-    transition: all 0.2s;
-    cursor: default;
-  }
-  .tool-pill:hover {
-    color: rgba(255,255,255,0.85);
-    border-color: rgba(255,255,255,0.35);
-  }
 
-  /* ── CONTACT ── */
-  #contact {
-    background: var(--bg);
-    text-align: center;
-    padding: 64px 48px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .contact-eyebrow {
-    font-family: var(--font-en);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    color: var(--text-light);
-    margin-bottom: 24px;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-  }
-  .contact-eyebrow::before, .contact-eyebrow::after {
-    content: '';
-    width: 24px; height: 1px;
-    background: var(--text-light);
-    opacity: 0.4;
-  }
-  .contact-headline {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: clamp(64px, 10vw, 120px);
-    letter-spacing: 2px;
-    line-height: 0.92;
-    margin-bottom: 16px;
-  }
-  .contact-sub {
-    font-family: var(--font-en);
-    font-style: normal;
-    font-size: 16px;
-    color: var(--text-light);
-    margin-bottom: 48px;
-  }
-  .contact-email-btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-family: var(--font-en);
-    font-size: 15px;
-    font-weight: 600;
-    padding: 18px 40px;
-    border-radius: 100px;
-    background: var(--bg-dark);
-    color: white;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: opacity 0.2s;
-  }
+  /* CONTACT */
+  #contact { background: var(--bg); text-align: center; padding: 64px 48px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .contact-eyebrow { font-family: var(--font-en); font-size: 12px; font-weight: 600; letter-spacing: 3px; color: var(--text-light); margin-bottom: 24px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .contact-eyebrow::before, .contact-eyebrow::after { content: ''; width: 24px; height: 1px; background: var(--text-light); opacity: 0.4; }
+  .contact-headline { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(64px, 10vw, 120px); letter-spacing: 2px; line-height: 0.92; margin-bottom: 16px; }
+  .contact-sub { font-family: var(--font-en); font-size: 16px; color: var(--text-light); margin-bottom: 48px; }
+  .contact-email-btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-en); font-size: 15px; font-weight: 600; padding: 18px 40px; border-radius: 100px; background: var(--bg-dark); color: white; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.2s; }
   .contact-email-btn:hover { opacity: 0.8; }
-  .contact-links {
-    display: flex; justify-content: center; gap: 20px;
-    margin-top: 40px;
-  }
-  .contact-link {
-    font-family: var(--font-en);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-light);
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: color 0.2s;
-  }
+  .contact-links { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
+  .contact-link { font-family: var(--font-en); font-size: 12px; font-weight: 500; color: var(--text-light); text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
   .contact-link:hover { color: var(--text); }
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--bg-dark);
-    color: rgba(255,255,255,0.3);
-    padding: 32px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  footer .footer-name {
-    font-family: var(--font-display);
-    font-size: 18px;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.6);
-  }
-  footer .footer-copy {
-    font-family: var(--font-en);
-    font-size: 11px;
-    letter-spacing: 0.5px;
-  }
+  /* FOOTER */
+  footer { background: var(--bg-dark); color: rgba(255,255,255,0.3); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; }
+  footer .footer-name { font-family: var(--font-display); font-size: 18px; letter-spacing: 2px; color: rgba(255,255,255,0.6); }
+  footer .footer-copy { font-family: var(--font-en); font-size: 11px; letter-spacing: 0.5px; }
 
-  /* ── ANIMATIONS ── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-  /* ── RESPONSIVE ── */
+  /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
@@ -1157,7 +237,6 @@
     .projects-grid { grid-template-columns: 1fr 1fr; }
     .media-grid { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: 1fr 1fr; }
-    .tools-grid { gap: 10px; }
     .hero-keywords { display: none; }
     .hero-photo-wrap { width: 300px; }
     .hero-cta { bottom: 32px; right: 24px; font-size: 11px; }
@@ -1173,7 +252,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">JH.ME</a>
   <ul class="nav-links">
@@ -1186,27 +264,18 @@
   <a href="#contact" class="nav-contact">Contact</a>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
-  <!-- 키워드 태그 (인물 좌우) -->
   <div class="hero-keywords" id="heroKeywords"></div>
-
-  <!-- 사진 (그라데이션 마스킹) -->
   <div class="hero-photo-wrap">
     <img class="hero-photo" src="hero.png" alt="김정희" id="heroPhoto">
   </div>
-
-  <!-- 이름 블록 (하단 중앙) -->
   <div class="hero-name-block">
     <div class="hero-greeting">Hello, my name is</div>
     <div class="hero-name">Jeounghee Kim</div>
   </div>
-
-  <!-- CTA (우하단) -->
   <div class="hero-cta">Let's work together →</div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
     <div class="about-photo-wrap fade-in">
@@ -1223,18 +292,9 @@
       <p class="about-text" id="aboutTextKo"></p>
       <p class="about-text-en" id="aboutTextEn"></p>
       <div class="about-stats">
-        <div class="stat">
-          <div class="stat-num">25+</div>
-          <div class="stat-label">Years</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">30+</div>
-          <div class="stat-label">Projects</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">3</div>
-          <div class="stat-label">Awards</div>
-        </div>
+        <div class="stat"><div class="stat-num">25+</div><div class="stat-label">Years</div></div>
+        <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Projects</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-label">Awards</div></div>
       </div>
       <div class="about-links">
         <a href="#contact" class="about-link primary">연락하기</a>
@@ -1244,12 +304,11 @@
   </div>
 </section>
 
-<!-- CAREER -->
 <section id="career">
   <div class="career-layout">
     <div class="career-intro fade-in">
       <div class="section-label">Career</div>
-      <div class="section-title">A journey<br>through AI<br>& design.</div>
+      <div class="section-title">A journey<br>through AI<br>&amp; design.</div>
       <p class="career-intro-text">커머스에서 금융 SI,<br>UIUX 에이전시를 거쳐<br>AI 서비스 PO·PM까지.<br>25년의 도전과 혁신.</p>
       <div class="career-years">25+</div>
     </div>
@@ -1257,7 +316,6 @@
   </div>
 </section>
 
-<!-- PORTFOLIO -->
 <section id="projects">
   <div class="projects-header">
     <div class="section-label">Portfolio</div>
@@ -1266,21 +324,17 @@
     <div class="project-filters" id="projectFilters">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="AI Service">AI Service</button>
-      <button class="filter-btn" data-filter="Propose & Consulting">Consulting</button>
+      <button class="filter-btn" data-filter="Propose &amp; Consulting">Consulting</button>
       <button class="filter-btn" data-filter="UIUX Build">UIUX Build</button>
-      <button class="filter-btn" data-filter="Commerce & Marketing">Commerce</button>
+      <button class="filter-btn" data-filter="Commerce &amp; Marketing">Commerce</button>
     </div>
   </div>
   <div class="projects-grid fade-in" id="projectsGrid"></div>
 </section>
 
-<!-- PORTFOLIO MODAL — 좌: 텍스트 / 우: 이미지 슬라이드 -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
-    <!-- 닫기 버튼 -->
     <button class="modal-close" onclick="closeModalBtn()">✕</button>
-
-    <!-- 좌측 텍스트 패널 -->
     <div class="modal-left">
       <div class="modal-left-inner">
         <div class="modal-category" id="modalCategory"></div>
@@ -1292,11 +346,8 @@
         <div id="modalLinkWrap"></div>
       </div>
     </div>
-
-    <!-- 우측 이미지 슬라이드 패널 -->
     <div class="modal-right">
       <div class="modal-slides" id="modalSlides"></div>
-      <!-- 슬라이드 하단 바 -->
       <div class="modal-slide-bar">
         <div class="modal-slide-dots" id="modalDots"></div>
         <div class="modal-slide-nav">
@@ -1308,30 +359,26 @@
   </div>
 </div>
 
-<!-- MEDIA & AWARDS -->
 <section id="media">
   <div class="media-grid">
     <div>
       <div class="section-label">Media</div>
-      <div class="section-title" style="font-size: clamp(32px,4vw,52px); margin-bottom:32px;">YouTube &<br>Appearances</div>
+      <div class="section-title" style="font-size: clamp(32px,4vw,52px); margin-bottom:32px;">YouTube &amp;<br>Appearances</div>
       <div class="media-list fade-in" id="mediaList"></div>
     </div>
     <div>
       <div class="section-label">Awards</div>
-      <div class="section-title" style="font-size: clamp(32px,4vw,52px); margin-bottom:32px;">Recognition<br>& Awards</div>
+      <div class="section-title" style="font-size: clamp(32px,4vw,52px); margin-bottom:32px;">Recognition<br>&amp; Awards</div>
       <div class="awards-list fade-in" id="awardsList"></div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
   <div class="skills-layout">
     <div class="section-label">Skills</div>
-    <div class="section-title" style="margin-bottom:60px; color:white;">Expertise &<br>Tools</div>
-    <!-- 역량 그리드 -->
+    <div class="section-title" style="margin-bottom:60px; color:white;">Expertise &amp;<br>Tools</div>
     <div class="skills-grid fade-in" id="skillsGrid"></div>
-    <!-- Tools 아이콘 박스 -->
     <div class="tools-section fade-in">
       <div class="tools-label">TOOLS</div>
       <div class="tools-grid">
@@ -1342,13 +389,13 @@
           <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><path d="M14.5 10l-4 7 4.2 7.5H11L8 19.5 5 24.5H1.5L5.8 17 1.8 10H5.5l2.8 5 2.8-5h3.4zm7.2 0c1.6 0 3 .3 4.2.9 1.2.6 2.1 1.5 2.7 2.7.7 1.2 1 2.6 1 4.3 0 1.6-.3 3-1 4.2-.6 1.2-1.6 2.1-2.8 2.8-1.2.6-2.7.9-4.4.9H18V10h3.7zm-.3 12.3c1.3 0 2.4-.4 3.1-1.2.8-.8 1.1-2 1.1-3.6s-.4-2.8-1.1-3.6c-.8-.8-1.8-1.2-3.2-1.2H21v9.6h.4z" fill="#ff61f6"/></svg>
         </div>
         <div class="tool-box" style="background:#001e36;" title="Photoshop">
-          <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><path d="M8 9h5.8c1.3 0 2.4.2 3.2.7.9.5 1.5 1.1 2 1.9.4.8.6 1.7.6 2.7 0 1-.2 1.9-.7 2.7-.5.8-1.2 1.4-2.1 1.9-1 .4-2.1.7-3.4.7H11v5.9H8V9zm5.5 8c.9 0 1.6-.3 2.2-.8.5-.5.8-1.2.8-2s-.3-1.5-.8-2c-.6-.5-1.3-.8-2.2-.8H11v5.6h2.5zm6.5 3c0-1.1.3-2 .9-2.8.6-.8 1.4-1.4 2.4-1.8 1-.4 2.1-.6 3.3-.6.5 0 1 0 1.4.1v-.4c0-.7-.2-1.3-.7-1.7-.4-.4-1.1-.6-1.9-.6-.6 0-1.2.1-1.7.3-.5.2-1 .5-1.5.9l-1.3-1.8c.6-.5 1.3-1 2.2-1.3.8-.3 1.7-.5 2.7-.5 1.7 0 3 .5 3.9 1.4.9.9 1.3 2.2 1.3 3.8v6.4H28v-1.4c-.4.5-.9.9-1.5 1.2-.6.3-1.3.4-2.1.4-1 0-1.9-.3-2.6-.8-.7-.6-1.5-1.4-1.8-2.4-.4-.9-.5-2-.5-3.2zm2.8.1c0 .5.2 1 .6 1.3.4.3.9.5 1.5.5.8 0 1.4-.2 2-.7.5-.4.8-1 .8-1.7v-.7c-.4-.1-.9-.1-1.4-.1-.9 0-1.7.2-2.3.6-.8.3-1.2.8-1.2 1.8z" fill="#31a8ff"/></svg>
+          <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><path d="M8 9h5.8c1.3 0 2.4.2 3.2.7.9.5 1.5 1.1 2 1.9.4.8.6 1.7.6 2.7 0 1-.2 1.9-.7 2.7-.5.8-1.2 1.4-2.1 1.9-1 .4-2.1.7-3.4.7H11v5.9H8V9zm5.5 8c.9 0 1.6-.3 2.2-.8.5-.5.8-1.2.8-2s-.3-1.5-.8-2c-.6-.5-1.3-.8-2.2-.8H11v5.6h2.5zm6.5 3c0-1.1.3-2 .9-2.8.6-.8 1.4-1.4 2.4-1.8 1-.4 2.1-.6 3.3-.6.5 0 1 0 1.4.1v-.4c0-.7-.2-1.3-.7-1.7-.4-.4-1.1-.6-1.9-.6-.6 0-1.2.1-1.7.3-.5.2-1 .5-1.5.9l-1.3-1.8c.6-.5 1.3-1 2.2-1.3.8-.3 1.7-.5 2.7-.5 1.7 0 3 .5 3.9 1.4.9.9 1.3 2.2 1.3 3.8v6.4H28v-1.4c-.4.5-.9.9-1.5 1.2-.6.3-1.3.4-2.1.4-1 0-1.9-.3-2.6-.8-.7-.5-1.1-1.2-1.3-2.1zm2.6-.2c0 .5.2 1 .6 1.3.4.3.9.5 1.5.5.8 0 1.4-.2 2-.7.5-.4.8-1 .8-1.7v-.7c-.4-.1-.9-.1-1.4-.1-.9 0-1.7.2-2.3.6-.8.4-1.2.9-1.2 1.8z" fill="#31a8ff"/></svg>
         </div>
         <div class="tool-box" style="background:#330000;" title="Illustrator">
           <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><path d="M15.4 22.3H10l-1.2 3.4H6l5.3-14h2.8l5.3 14h-2.8l-1.2-3.4zm-4.6-2.2h3.8L12.7 14l-1.9 6.1zM22 9h2.7v16.7H22V9z" fill="#ff9a00"/></svg>
         </div>
         <div class="tool-box" style="background:#00005b;" title="After Effects">
-          <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><path d="M14.5 22.3H9.1l-1.2 3.4H5.2l5.3-14h2.8l5.3 14h-2.8l-1.3-3.4zm-4.6-2.2h3.8L11.8 14 9.9 20.1zM21 18.4c0-1.2.2-2.3.7-3.2.5-1 1.2-1.7 2.1-2.2.9-.5 2-.8 3.2-.8.8 0 1.5.1 2.1.4V9H32v16.7h-2.6v-1.3c-.5.5-1 .9-1.6 1.1-.6.3-1.3.4-2 .4-1.2 0-2.2-.3-3-.9-.9-.6-1.5-1.4-2-2.4-.4-.9-.8-2-.8-3.2zm2.8.1c0 1.1.3 2 .8 2.7.5.6 1.2 1 2.1 1 .7 0 1.3-.2 1.8-.6.5-.4.8-.9.8-1.5v-4.5c-.5-.2-1-.3-1.6-.3-1.1 0-2 .4-2.6 1.1-.9.7-1.3 1.8-1.3 3.1z" fill="#9999ff"/></svg>
+          <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><path d="M14.5 22.3H9.1l-1.2 3.4H5.2l5.3-14h2.8l5.3 14h-2.8l-1.3-3.4zm-4.6-2.2h3.8L11.8 14 9.9 20.1zM21 18.4c0-1.2.2-2.3.7-3.2.5-1 1.2-1.7 2.1-2.2.9-.5 2-.8 3.2-.8.8 0 1.5.1 2.1.4V9H32v16.7h-2.6v-1.3c-.5.5-1 .9-1.6 1.1-.6.3-1.3.4-2 .4-1.2 0-2.2-.3-3-.9-.9-.6-1.5-1.4-2-2.4-.3-.9-.7-2-.7-3.2zm2.8.1c0 1.1.3 2 .8 2.7.5.6 1.2 1 2.1 1 .7 0 1.3-.2 1.8-.6.5-.4.8-.9.8-1.5v-4.5c-.5-.2-1-.3-1.6-.3-1.1 0-2 .4-2.6 1.1-.9.7-1.3 1.8-1.3 3.1z" fill="#9999ff"/></svg>
         </div>
         <div class="tool-box" style="background:#00005b;" title="Premiere Pro">
           <svg width="22" height="22" viewBox="0 0 36 36" fill="none"><path d="M7 9h5.8c1.3 0 2.4.2 3.2.7.9.5 1.5 1.1 2 1.9.4.8.6 1.7.6 2.7 0 1-.2 1.9-.7 2.7-.5.8-1.2 1.4-2.1 1.9-1 .4-2.1.7-3.4.7H10v5.9H7V9zm5.5 8c.9 0 1.6-.3 2.2-.8.5-.5.8-1.2.8-2s-.3-1.5-.8-2c-.6-.5-1.3-.8-2.2-.8H10v5.6h2.5zm6.5 0c0-1.3.2-2.4.7-3.2.5-.9 1.2-1.5 2.1-2 1-.4 2.1-.7 3.4-.7h1.8V9H30v16.7h-2.7v-1.2c-.4.4-.9.8-1.5 1-.6.3-1.3.4-2 .4-1.2 0-2.2-.3-3.1-.9-.8-.6-1.5-1.4-1.9-2.4-.5-1-.8-2.1-.8-3.3zm2.8 0c0 1.1.3 2 .8 2.7.5.7 1.3 1 2.2 1 .7 0 1.2-.2 1.7-.5.5-.4.8-.9.8-1.5v-4.5c-.5-.2-1-.3-1.6-.3-1.1 0-2 .4-2.7 1.1-.8.8-1.2 1.8-1.2 3z" fill="#9999ff"/></svg>
@@ -1357,93 +404,47 @@
           <svg width="20" height="20" viewBox="0 0 100 100" fill="none"><rect width="100" height="100" rx="18" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M18 14v72c0 4 2 5.4 6.3 5.1l69.3-4c4.5-.3 5.6-2.8 5.6-6.3V10c0-3.3-1.3-5-4.2-4.7L22.5 9.2C19.3 9.6 18 11.1 18 14zm65.5 3.8c.4 1.8 0 3.6-1.8 3.8L78 22.4V78c-3.8 2.1-7.4 3.2-10.3 3.2-4.7 0-5.9-1.5-9.4-6L37 42.6V73.9l6.5 1.4s0 3.6-5 3.6L24 80.1c-.4-1.8.5-3.6 1.8-4l5.3-1.5V31l-7.3-.5c-.4-1.8.5-4.5 3.2-4.7L45 24.7l23.4 35.8V28.8l-5.5-.6c-.4-2.2 1.3-3.8 3.3-4z" fill="#000"/></svg>
           <span>Notion</span>
         </div>
-        <div class="tool-pill-icon" title="Jira" style="background:#0052cc;">
-          <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M16 3C9.4 3 4 8.4 4 15s5.4 12 12 12 12-5.4 12-12S22.6 3 16 3zm0 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="#fff"/><path d="M16 13a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="#fff"/></svg>
+        <div class="tool-pill-icon" style="background:#0052cc;" title="Jira">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><path d="M15.9 3C9.4 3 4.1 8.3 4.1 14.8c0 3.5 1.5 6.6 3.9 8.8l7.9 7.9 7.9-7.9c2.4-2.2 3.9-5.3 3.9-8.8C27.7 8.3 22.4 3 15.9 3zm0 17.6c-1.5 0-2.9-.6-3.9-1.6s-1.6-2.4-1.6-3.9.6-2.9 1.6-3.9 2.4-1.6 3.9-1.6 2.9.6 3.9 1.6 1.6 2.4 1.6 3.9-.6 2.9-1.6 3.9-2.4 1.6-3.9 1.6z" fill="#fff"/></svg>
           <span>Jira</span>
         </div>
-        <div class="tool-pill-icon" title="Slack" style="background:#4a154b;">
+        <div class="tool-pill-icon" style="background:#4a154b;" title="Slack">
           <svg width="20" height="20" viewBox="0 0 54 54" fill="none"><path d="M19.7 32.4a4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4h4v4z" fill="#e01e5a"/><path d="M21.7 32.4a4 4 0 0 1 4-4 4 4 0 0 1 4 4v10a4 4 0 0 1-4 4 4 4 0 0 1-4-4v-10z" fill="#e01e5a"/><path d="M25.7 19.7a4 4 0 0 1-4-4 4 4 0 0 1 4-4 4 4 0 0 1 4 4v4h-4z" fill="#36c5f0"/><path d="M25.7 21.7a4 4 0 0 1 4 4 4 4 0 0 1-4 4H15.7a4 4 0 0 1-4-4 4 4 0 0 1 4-4h10z" fill="#36c5f0"/><path d="M38.4 25.7a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4v-4h4z" fill="#2eb67d"/><path d="M36.4 25.7a4 4 0 0 1-4-4 4 4 0 0 1 4-4h10a4 4 0 0 1 4 4 4 4 0 0 1-4 4h-10z" fill="#2eb67d"/><path d="M32.4 12.7a4 4 0 0 1-4-4 4 4 0 0 1 4-4 4 4 0 0 1 4 4v4h-4z" fill="#ecb22e"/><path d="M32.4 14.7a4 4 0 0 1 4 4 4 4 0 0 1-4 4H22.4a4 4 0 0 1-4-4 4 4 0 0 1 4-4h10z" fill="#ecb22e"/></svg>
           <span>Slack</span>
         </div>
-        <div class="tool-pill-icon" title="ChatGPT" style="background:#10a37f;">
-          <svg width="20" height="20" viewBox="0 0 41 41" fill="none"><path d="M37.5 16.6a10 10 0 0 0-.9-8.2 10.4 10.4 0 0 0-11.2-5 10 10 0 0 0-7.5-3.4 10.4 10.4 0 0 0-9.9 7.2 10 10 0 0 0-6.7 4.9 10.4 10.4 0 0 0 1.3 12.2 10 10 0 0 0 .9 8.2 10.4 10.4 0 0 0 11.2 5 10 10 0 0 0 7.5 3.4 10.4 10.4 0 0 0 9.9-7.2 10 10 0 0 0 6.7-4.9 10.4 10.4 0 0 0-1.3-12.2zm-15.5 21.6a7.7 7.7 0 0 1-5-.1l.2-.1 8.3-4.8a1.4 1.4 0 0 0 .7-1.2v-11.6l3.5 2a.1.1 0 0 1 .1.1v9.7a7.7 7.7 0 0 1-7.8 6zm-16.7-7.1a7.7 7.7 0 0 1-.9-5.2l.2.1 8.3 4.8a1.4 1.4 0 0 0 1.4 0l10.1-5.8v4a.1.1 0 0 1-.1.1l-8.4 4.8a7.7 7.7 0 0 1-10.6-2.8zm-2.2-17.9a7.7 7.7 0 0 1 4-3.4v9.8a1.4 1.4 0 0 0 .7 1.2l10.1 5.8-3.5 2a.1.1 0 0 1-.1 0l-8.4-4.9a7.7 7.7 0 0 1-2.8-10.5zm28.8 6.6L21.8 13l3.5-2a.1.1 0 0 1 .1 0l8.4 4.8a7.7 7.7 0 0 1-1.2 13.9v-9.8a1.4 1.4 0 0 0-.7-1.2zm3.5-5.2l-.2-.1-8.3-4.8a1.4 1.4 0 0 0-1.4 0L15.4 15.5v-4a.1.1 0 0 1 .1-.1l8.4-4.8a7.7 7.7 0 0 1 11.5 8zm-22 7.1L10 19.8a.1.1 0 0 1-.1-.1v-9.7a7.7 7.7 0 0 1 12.6-5.9l-.2.1-8.3 4.8a1.4 1.4 0 0 0-.7 1.2zm1.9-4.1l4.5-2.6 4.5 2.6v5.1l-4.5 2.6-4.5-2.6z" fill="white"/></svg>
-          <span>ChatGPT</span>
-        </div>
-        <div class="tool-pill-icon" title="Claude" style="background:#D97757;">
-          <svg width="20" height="20" viewBox="0 0 46 46" fill="none"><path d="M26.2 13.5l-7.9 19.1h3.1l1.6-4h7.9l1.6 4H35.6l-7.9-19.1h-1.5zm.8 4.3l2.8 7.1h-5.6l2.8-7.1z" fill="white"/></svg>
-          <span>Claude</span>
-        </div>
-        <div class="tool-pill-icon" title="Gemini" style="background:linear-gradient(135deg,#1a73e8,#4285f4);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z" fill="rgba(255,255,255,0.3)"/><path d="M12 6l1.5 4.5H18l-3.75 2.7 1.5 4.5L12 15l-3.75 2.7 1.5-4.5L6 10.5h4.5z" fill="white"/></svg>
-          <span>Gemini</span>
-        </div>
-        <div class="tool-pill-icon" title="Canva" style="background:#00c4cc;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 13.5c-.4.7-1.1 1-1.8 1-.5 0-1-.2-1.5-.5L9 14.3c-.5-.4-.8-1-.8-1.6 0-.5.2-1 .5-1.4l3.5-4.5c.4-.5 1-.8 1.6-.8.8 0 1.5.4 1.9 1.1.4.6.4 1.4.1 2l-1.3 2.6 1 .8c.7.5.9 1.5.5 2.1z" fill="white"/></svg>
-          <span>Canva</span>
-        </div>
-        <div class="tool-pill-icon" title="Genspark" style="background:linear-gradient(135deg,#6c47ff,#a855f7);">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z" fill="white"/></svg>
-          <span>Genspark</span>
-        </div>
-        <div class="tool-pill-icon" title="Microsoft 365" style="background:#d83b01;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2h15A2.5 2.5 0 0 1 22 4.5v15a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 19.5v-15zm9 1.5v12l2-2V8l3 4 2-2-5-4.5L11 6zm-1 0L5 10.5l2 2 3-4v8l2 2V6h-2z" fill="white"/></svg>
-          <span>MS 365</span>
-        </div>
-        <div class="tool-pill-icon" title="Google Analytics" style="background:#e37400;">
+        <div class="tool-pill-icon" style="background:#e37400;" title="Google Analytics">
           <svg width="20" height="20" viewBox="0 0 192 192" fill="none"><path d="M132 28a20 20 0 0 1 20 20v96a20 20 0 0 1-40 0V48a20 20 0 0 1 20-20z" fill="#f9ab00"/><path d="M60 100a20 20 0 0 1 20 20v24a20 20 0 0 1-40 0v-24a20 20 0 0 1 20-20z" fill="rgba(255,255,255,0.8)"/><circle cx="96" cy="164" r="20" fill="rgba(255,255,255,0.8)"/></svg>
           <span>GA</span>
         </div>
-      </div>
-        <div class="tool-box" title="Adobe XD" style="border-color:#ff61f6;">
-          <svg width="18" height="18" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#470137"/><path d="M14.5 10l-4 7 4.2 7.5H11L8 19.5 5 24.5H1.5L5.8 17 1.8 10H5.5l2.8 5 2.8-5h3.4zm7.2 0c1.6 0 3 .3 4.2.9 1.2.6 2.1 1.5 2.7 2.7.7 1.2 1 2.6 1 4.3 0 1.6-.3 3-1 4.2-.6 1.2-1.6 2.1-2.8 2.8-1.2.6-2.7.9-4.4.9H18V10h3.7zm-.3 12.3c1.3 0 2.4-.4 3.1-1.2.8-.8 1.1-2 1.1-3.6s-.4-2.8-1.1-3.6c-.8-.8-1.8-1.2-3.2-1.2H21v9.6h.4z" fill="white"/></svg>
+        <div class="tool-pill-icon" style="background:#10a37f;" title="ChatGPT">
+          <svg width="20" height="20" viewBox="0 0 41 41" fill="none"><path d="M37.5 16.6a10 10 0 0 0-.9-8.2 10.4 10.4 0 0 0-11.2-5 10 10 0 0 0-7.5-3.4 10.4 10.4 0 0 0-9.9 7.2 10 10 0 0 0-6.7 4.9 10.4 10.4 0 0 0 1.3 12.2 10 10 0 0 0 .9 8.2 10.4 10.4 0 0 0 11.2 5 10 10 0 0 0 7.5 3.4 10.4 10.4 0 0 0 9.9-7.2 10 10 0 0 0 6.7-4.9 10.4 10.4 0 0 0-1.3-12.2zm-15.5 21.6a7.7 7.7 0 0 1-5-.1l.2-.1 8.3-4.8a1.4 1.4 0 0 0 .7-1.2v-11.6l3.5 2a.1.1 0 0 1 .1.1v9.7a7.7 7.7 0 0 1-7.8 6zm-16.7-7.1a7.7 7.7 0 0 1-.9-5.2l.2.1 8.3 4.8a1.4 1.4 0 0 0 1.4 0l10.1-5.8v4a.1.1 0 0 1-.1.1l-8.4 4.8a7.7 7.7 0 0 1-10.6-2.8zm-2.2-17.9a7.7 7.7 0 0 1 4-3.4v9.8a1.4 1.4 0 0 0 .7 1.2l10.1 5.8-3.5 2a.1.1 0 0 1-.1 0l-8.4-4.9a7.7 7.7 0 0 1-2.8-10.5zm28.8 6.6L21.8 13l3.5-2a.1.1 0 0 1 .1 0l8.4 4.8a7.7 7.7 0 0 1-1.2 13.9v-9.8a1.4 1.4 0 0 0-.7-1.2zm3.5-5.2l-.2-.1-8.3-4.8a1.4 1.4 0 0 0-1.4 0L15.4 15.5v-4a.1.1 0 0 1 .1-.1l8.4-4.8a7.7 7.7 0 0 1 11.5 8zm-22 7.1L10 19.8a.1.1 0 0 1-.1-.1v-9.7a7.7 7.7 0 0 1 12.6-5.9l-.2.1-8.3 4.8a1.4 1.4 0 0 0-.7 1.2zm1.9-4.1l4.5-2.6 4.5 2.6v5.1l-4.5 2.6-4.5-2.6z" fill="white"/></svg>
+          <span>ChatGPT</span>
         </div>
-        <div class="tool-box" title="Photoshop" style="border-color:#31a8ff;">
-          <svg width="18" height="18" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#001e36"/><path d="M8 9h5.8c1.3 0 2.4.2 3.2.7.9.5 1.5 1.1 2 1.9.4.8.6 1.7.6 2.7 0 1-.2 1.9-.7 2.7-.5.8-1.2 1.4-2.1 1.9-1 .4-2.1.7-3.4.7H11v5.9H8V9zm5.5 8c.9 0 1.6-.3 2.2-.8.5-.5.8-1.2.8-2s-.3-1.5-.8-2c-.6-.5-1.3-.8-2.2-.8H11v5.6h2.5zm6.5 3c0-1.1.3-2 .9-2.8.6-.8 1.4-1.4 2.4-1.8 1-.4 2.1-.6 3.3-.6.5 0 1 0 1.4.1v-.4c0-.7-.2-1.3-.7-1.7-.4-.4-1.1-.6-1.9-.6-.6 0-1.2.1-1.7.3-.5.2-1 .5-1.5.9l-1.3-1.8c.6-.5 1.3-1 2.2-1.3.8-.3 1.7-.5 2.7-.5 1.7 0 3 .5 3.9 1.4.9.9 1.3 2.2 1.3 3.8v6.4H28v-1.4c-.4.5-.9.9-1.5 1.2-.6.3-1.3.4-2.1.4-1 0-1.9-.3-2.6-.8-.7-.6-1-.4-1.8zm2.6-.4c0 .5.2 1 .6 1.3.4.3.9.5 1.5.5.8 0 1.4-.2 2-.7.5-.4.8-1 .8-1.7v-.7c-.4-.1-.9-.1-1.4-.1-.9 0-1.7.2-2.3.6-.8.3-1.2.8-1.2 1.8z" fill="#31a8ff"/></svg>
+        <div class="tool-pill-icon" style="background:#D97757;" title="Claude">
+          <svg width="20" height="20" viewBox="0 0 46 46" fill="none"><path d="M26.2 13.5l-7.9 19.1h3.1l1.6-4h7.9l1.6 4H35.6l-7.9-19.1h-1.5zm.8 4.3l2.8 7.1h-5.6l2.8-7.1z" fill="white"/></svg>
+          <span>Claude</span>
         </div>
-        <div class="tool-box" title="Illustrator" style="border-color:#ff9a00;">
-          <svg width="18" height="18" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#330000"/><path d="M15.4 22.3H10l-1.2 3.4H6l5.3-14h2.8l5.3 14h-2.8l-1.2-3.4zm-4.6-2.2h3.8L12.7 14l-1.9 6.1zM22 9h2.7v16.7H22V9z" fill="#ff9a00"/></svg>
+        <div class="tool-pill-icon" style="background:linear-gradient(135deg,#1a73e8,#4285f4);" title="Gemini">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z" fill="rgba(255,255,255,0.3)"/><path d="M12 6l1.5 4.5H18l-3.75 2.7 1.5 4.5L12 15l-3.75 2.7 1.5-4.5L6 10.5h4.5z" fill="white"/></svg>
+          <span>Gemini</span>
         </div>
-        <div class="tool-box" title="After Effects" style="border-color:#9999ff;">
-          <svg width="18" height="18" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#00005b"/><path d="M14.5 22.3H9.1l-1.2 3.4H5.2l5.3-14h2.8l5.3 14h-2.8l-1.3-3.4zm-4.6-2.2h3.8L11.8 14 9.9 20.1zM21 18.4c0-1.2.2-2.3.7-3.2.5-1 1.2-1.7 2.1-2.2.9-.5 2-.8 3.2-.8.8 0 1.5.1 2.1.4V9H32v16.7h-2.6v-1.3c-.5.5-1 .9-1.6 1.1-.6.3-1.3.4-2 .4-1.2 0-2.2-.3-3-.9-.9-.6-1.5-1.4-2-2.4-.4-.9-.8-2-.8-3.2zm2.8.1c0 1.1.3 2 .8 2.7.5.6 1.2 1 2.1 1 .7 0 1.3-.2 1.8-.6.5-.4.8-.9.8-1.5v-4.5c-.5-.2-1-.3-1.6-.3-1.1 0-2 .4-2.6 1.1-.9.7-1.3 1.8-1.3 3.1z" fill="#9999ff"/></svg>
+        <div class="tool-pill-icon" style="background:#00c4cc;" title="Canva">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 13.5c-.4.7-1.1 1-1.8 1-.5 0-1-.2-1.5-.5L9 14.3c-.5-.4-.8-1-.8-1.6 0-.5.2-1 .5-1.4l3.5-4.5c.4-.5 1-.8 1.6-.8.8 0 1.5.4 1.9 1.1.4.6.4 1.4.1 2l-1.3 2.6 1 .8c.7.5.9 1.5.5 2.1z" fill="white"/></svg>
+          <span>Canva</span>
         </div>
-        <div class="tool-box" title="Premiere Pro" style="border-color:#9999ff;">
-          <svg width="18" height="18" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#00005b"/><path d="M7 9h5.8c1.3 0 2.4.2 3.2.7.9.5 1.5 1.1 2 1.9.4.8.6 1.7.6 2.7 0 1-.2 1.9-.7 2.7-.5.8-1.2 1.4-2.1 1.9-1 .4-2.1.7-3.4.7H10v5.9H7V9zm5.5 8c.9 0 1.6-.3 2.2-.8.5-.5.8-1.2.8-2s-.3-1.5-.8-2c-.6-.5-1.3-.8-2.2-.8H10v5.6h2.5zm6.5 0c0-1.3.2-2.4.7-3.2.5-.9 1.2-1.5 2.1-2 1-.4 2.1-.7 3.4-.7h1.8V9H30v16.7h-2.7v-1.2c-.4.4-.9.8-1.5 1-.6.3-1.3.4-2 .4-1.2 0-2.2-.3-3.1-.9-.8-.6-1.5-1.4-1.9-2.4-.5-1-.8-2.1-.8-3.3zm2.8 0c0 1.1.3 2 .8 2.7.5.7 1.3 1 2.2 1 .7 0 1.2-.2 1.7-.5.5-.4.8-.9.8-1.5v-4.5c-.5-.2-1-.3-1.6-.3-1.1 0-2 .4-2.7 1.1-.8.8-1.2 1.8-1.2 3z" fill="#9999ff"/></svg>
+        <div class="tool-pill-icon" style="background:linear-gradient(135deg,#6c47ff,#a855f7);" title="Genspark">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z" fill="white"/></svg>
+          <span>Genspark</span>
         </div>
-        <!-- AI/협업 툴 — pill with icon -->
-        <div class="tool-pill-icon" title="Notion">
-          <svg width="14" height="14" viewBox="0 0 100 100" fill="none"><path d="M6 8.5c1.7 2.1 2.3 2 5.5 1.8L87 5.8c1.6 0 .2-1.6-.5-1.8L72 1.6C69.1.9 68.3.9 65.7 2.8L10.2 7.1C8 7.3 7.6 8.1 8.3 9c.6.9 1.4 1.3 1.4 1.3" fill="#fff"/><path fill-rule="evenodd" clip-rule="evenodd" d="M13 14v73c0 3.9 1.9 5.4 6.3 5.1l69.3-4c4.5-.3 5.6-2.8 5.6-6.3V10c0-3.3-1.3-5-4.2-4.7L17.5 9.2C14.3 9.6 13 11.1 13 14zm65.5 3.8c.4 1.8 0 3.6-1.8 3.8L73 22.4V78c-3.8 2.1-7.4 3.2-10.3 3.2-4.7 0-5.9-1.5-9.4-6L32 42.6V73.9l6.5 1.4s0 3.6-5 3.6L19 80.1c-.4-1.8.5-3.6 1.8-4l5.3-1.5V31l-7.3-.5c-.4-1.8.5-4.5 3.2-4.7L40 24.7l23.4 35.8V28.8l-5.5-.6c-.4-2.2 1.3-3.8 3.3-4z" fill="#fff"/></svg>
-          Notion
-        </div>
-        <div class="tool-pill-icon" title="Jira">
-          <svg width="14" height="14" viewBox="0 0 32 32" fill="none"><path d="M15.9 3C9.4 3 4.1 8.3 4.1 14.8c0 3.5 1.5 6.6 3.9 8.8l7.9 7.9 7.9-7.9c2.4-2.2 3.9-5.3 3.9-8.8C27.7 8.3 22.4 3 15.9 3zm0 17.6c-1.5 0-2.9-.6-3.9-1.6s-1.6-2.4-1.6-3.9.6-2.9 1.6-3.9 2.4-1.6 3.9-1.6 2.9.6 3.9 1.6 1.6 2.4 1.6 3.9-.6 2.9-1.6 3.9-2.4 1.6-3.9 1.6z" fill="#2684ff"/></svg>
-          Jira
-        </div>
-        <div class="tool-pill-icon" title="Slack">
-          <svg width="14" height="14" viewBox="0 0 54 54" fill="none"><path d="M19.7 32.4a4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4h4v4z" fill="#e01e5a"/><path d="M21.7 32.4a4 4 0 0 1 4-4 4 4 0 0 1 4 4v10a4 4 0 0 1-4 4 4 4 0 0 1-4-4v-10z" fill="#e01e5a"/><path d="M25.7 19.7a4 4 0 0 1-4-4 4 4 0 0 1 4-4 4 4 0 0 1 4 4v4h-4z" fill="#36c5f0"/><path d="M25.7 21.7a4 4 0 0 1 4 4 4 4 0 0 1-4 4H15.7a4 4 0 0 1-4-4 4 4 0 0 1 4-4h10z" fill="#36c5f0"/><path d="M38.4 25.7a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4v-4h4z" fill="#2eb67d"/><path d="M36.4 25.7a4 4 0 0 1-4-4 4 4 0 0 1 4-4h10a4 4 0 0 1 4 4 4 4 0 0 1-4 4h-10z" fill="#2eb67d"/><path d="M32.4 12.7a4 4 0 0 1-4-4 4 4 0 0 1 4-4 4 4 0 0 1 4 4v4h-4z" fill="#ecb22e"/><path d="M32.4 14.7a4 4 0 0 1 4 4 4 4 0 0 1-4 4H22.4a4 4 0 0 1-4-4 4 4 0 0 1 4-4h10z" fill="#ecb22e"/></svg>
-          Slack
-        </div>
-        <div class="tool-pill-icon" title="Google Analytics">
-          <svg width="14" height="14" viewBox="0 0 192 192" fill="none"><path d="M132 28a20 20 0 0 1 20 20v96a20 20 0 0 1-40 0V48a20 20 0 0 1 20-20z" fill="#f9ab00"/><path d="M60 100a20 20 0 0 1 20 20v24a20 20 0 0 1-40 0v-24a20 20 0 0 1 20-20z" fill="#e37400"/><circle cx="96" cy="144" r="20" fill="#e37400"/></svg>
-          GA
-        </div>
-        <div class="tool-pill-icon" title="ChatGPT / OpenAI">
-          <svg width="14" height="14" viewBox="0 0 41 41" fill="none"><path d="M37.5 16.6a10 10 0 0 0-.9-8.2 10.4 10.4 0 0 0-11.2-5 10 10 0 0 0-7.5-3.4 10.4 10.4 0 0 0-9.9 7.2 10 10 0 0 0-6.7 4.9 10.4 10.4 0 0 0 1.3 12.2 10 10 0 0 0 .9 8.2 10.4 10.4 0 0 0 11.2 5 10 10 0 0 0 7.5 3.4 10.4 10.4 0 0 0 9.9-7.2 10 10 0 0 0 6.7-4.9 10.4 10.4 0 0 0-1.3-12.2zm-15.5 21.6a7.7 7.7 0 0 1-5-.1l.2-.1 8.3-4.8a1.4 1.4 0 0 0 .7-1.2v-11.6l3.5 2a.1.1 0 0 1 .1.1v9.7a7.7 7.7 0 0 1-7.8 6zm-16.7-7.1a7.7 7.7 0 0 1-.9-5.2l.2.1 8.3 4.8a1.4 1.4 0 0 0 1.4 0l10.1-5.8v4a.1.1 0 0 1-.1.1l-8.4 4.8a7.7 7.7 0 0 1-10.6-2.8zm-2.2-17.9a7.7 7.7 0 0 1 4-3.4v9.8a1.4 1.4 0 0 0 .7 1.2l10.1 5.8-3.5 2a.1.1 0 0 1-.1 0l-8.4-4.9a7.7 7.7 0 0 1-2.8-10.5zm28.8 6.6L21.8 13l3.5-2a.1.1 0 0 1 .1 0l8.4 4.8a7.7 7.7 0 0 1-1.2 13.9v-9.8a1.4 1.4 0 0 0-.7-1.2zm3.5-5.2l-.2-.1-8.3-4.8a1.4 1.4 0 0 0-1.4 0L15.4 15.5v-4a.1.1 0 0 1 .1-.1l8.4-4.8a7.7 7.7 0 0 1 11.5 8zm-22 7.1L10 19.8a.1.1 0 0 1-.1-.1v-9.7a7.7 7.7 0 0 1 12.6-5.9l-.2.1-8.3 4.8a1.4 1.4 0 0 0-.7 1.2zm1.9-4.1l4.5-2.6 4.5 2.6v5.1l-4.5 2.6-4.5-2.6z" fill="white"/></svg>
-          ChatGPT
-        </div>
-        <div class="tool-pill-icon" title="Claude AI">
-          <svg width="14" height="14" viewBox="0 0 46 46" fill="none"><path d="M32.7 5H13.3C8.7 5 5 8.7 5 13.3v19.4C5 37.3 8.7 41 13.3 41h19.4C37.3 41 41 37.3 41 32.7V13.3C41 8.7 37.3 5 32.7 5z" fill="#D97757"/><path d="M26.2 13.5l-7.9 19.1h3.1l1.6-4h7.9l1.6 4H35.6l-7.9-19.1h-1.5zm.8 4.3l2.8 7.1h-5.6l2.8-7.1z" fill="white"/></svg>
-          Claude
-        </div>
-        <div class="tool-pill-icon" title="Google Gemini">
-          <svg width="14" height="14" viewBox="0 0 28 28" fill="none"><path d="M14 28A14 14 0 0 0 14 0a14 14 0 0 1 0 28z" fill="url(#g1)"/><path d="M14 0a14 14 0 0 0 0 28A14 14 0 0 1 14 0z" fill="url(#g2)"/><defs><linearGradient id="g1" x1="14" y1="0" x2="14" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#4285F4"/><stop offset="1" stop-color="#1967D2"/></linearGradient><linearGradient id="g2" x1="14" y1="0" x2="14" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#1A73E8"/><stop offset="1" stop-color="#185ABC"/></linearGradient></defs></svg>
-          Gemini
+        <div class="tool-pill-icon" style="background:#d83b01;" title="Microsoft 365">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2h15A2.5 2.5 0 0 1 22 4.5v15a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 19.5v-15zm9 1.5v12l2-2V8l3 4 2-2-5-4.5L11 6zm-1 0L5 10.5l2 2 3-4v8l2 2V6h-2z" fill="white"/></svg>
+          <span>MS 365</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-eyebrow">Open to Opportunities</div>
   <div class="contact-headline">Let's<br>Talk.</div>
@@ -1487,573 +488,52 @@
     "AI Agent"
   ],
   "career": [
-    {
-      "id": "c1",
-      "company": "㈜다이퀘스트",
-      "period": "2022.09 - 현재",
-      "duration": "3년 10개월",
-      "type": "정규직",
-      "role": "AI 서비스 PO, PM 및 마케팅 전략 수립 및 실행",
-      "description": "서비스 전략 수립 및 실행, AI 기술연구소와 기술 방향 수립, UIUX 포함 CX 전략, 마케팅 전략 수립 및 실행"
-    },
-    {
-      "id": "c2",
-      "company": "피플",
-      "period": "2021.03 - 2022.08",
-      "duration": "1년 6개월",
-      "type": "정규직",
-      "role": "UIUX 전문 회사대표 / PM&PMO",
-      "description": "UIUX 전문 회사 설립 및 경영관리, 대표이사 겸임, 기획/디자인 구성 전체 인력 6명"
-    },
-    {
-      "id": "c3",
-      "company": "㈜아메바",
-      "period": "2019.06 - 2021.02",
-      "duration": "1년 9개월",
-      "type": "정규직",
-      "role": "UIUX 리더 및 영업/매출/사업 관리",
-      "description": "UIUX 전략/방향성/방법론 수립, 내부 인력 교육, 제안서 디렉팅 및 PT, 사업관리 및 프로젝트 PM/PMO"
-    },
-    {
-      "id": "c4",
-      "company": "뱅크웨어글로벌㈜",
-      "period": "2017.10 - 2019.05",
-      "duration": "1년 8개월",
-      "type": "정규직",
-      "role": "금융 SI UIUX 리딩 및 프로젝트 PM",
-      "description": "UX 채널사업 PM, UX전략 및 컨설팅, 프로젝트 관리, 방법론 제안"
-    },
-    {
-      "id": "c5",
-      "company": "휴메이저러럭셔리",
-      "period": "2016.06 - 2017.08",
-      "duration": "1년 3개월",
-      "type": "정규직",
-      "role": "이커머스 구축, 운영, 디지털마케팅",
-      "description": "폴리폴리 브랜드몰 구축 및 운영, 온라인 물량계획, 매출 및 마케팅 실무 진행"
-    },
-    {
-      "id": "c6",
-      "company": "프럼 UI/UX 컨설팅",
-      "period": "2015.06 - 2016.04",
-      "duration": "11개월",
-      "type": "계약직",
-      "role": "신라면세점 KR&CN Web/Mobile 차세대 구축",
-      "description": "UIUX 컨설팅 및 PL 역할, 일정관리, 대외부 커뮤니케이션, 화면설계서 작성"
-    },
-    {
-      "id": "c7",
-      "company": "서양네트웍스",
-      "period": "2013.11 - 2015.04",
-      "duration": "1년 6개월",
-      "type": "정규직",
-      "role": "신규사업(온라인이커머스) 전체 PM 및 쇼핑몰 운영",
-      "description": "5개 대표 브랜드 통합몰 구축 및 운영, 마케팅"
-    },
-    {
-      "id": "c8",
-      "company": "아지앙스코리아",
-      "period": "2012.04 - 2013.09",
-      "duration": "1년 6개월",
-      "type": "정규직",
-      "role": "Platform Dev Unit 리더 및 웹, 모바일 어플리케이션 기획",
-      "description": "라코스테 브랜드 & KR 쇼핑몰 운영, 프로젝트 QA & PM"
-    },
-    {
-      "id": "c9",
-      "company": "(주)ISEcommerce",
-      "period": "2008.03 - 2012.03",
-      "duration": "4년 1개월",
-      "type": "정규직",
-      "role": "이커머스 컨설팅, 구축 및 운영 PM",
-      "description": "차세대 글로벌 이커머스 통합 플랫폼 구축 PM, 외부 요청 사이트 제작 및 구축 PM"
-    },
-    {
-      "id": "c10",
-      "company": "가야미디어",
-      "period": "2001.03 - 2004.03",
-      "duration": "3년 1개월",
-      "type": "정규직",
-      "role": "사이트 운영 및 기획/디자인, 프로모션 기획 및 운영",
-      "description": "자체 사이트(www.ikissyou.com) 구축 및 운영, 영화 커뮤니티 1년 만에 10만 회원 모집"
-    },
-    {
-      "id": "c11",
-      "company": "지오아이",
-      "period": "1996.07 - 2001.02",
-      "duration": "4년 8개월",
-      "type": "정규직",
-      "role": "웹 디자인 및 기획",
-      "description": "자체 개발 사이트 구축 및 운영, 웹 사이트 디자인, 기획 및 운영"
-    }
+    {"id":"c1","company":"㈜다이퀘스트","period":"2022.09 - 현재","duration":"3년 10개월","type":"정규직","role":"AI 서비스 PO, PM 및 마케팅 전략 수립 및 실행","description":"서비스 전략 수립 및 실행, AI 기술연구소와 기술 방향 수립, UIUX 포함 CX 전략, 마케팅 전략 수립 및 실행"},
+    {"id":"c2","company":"피플","period":"2021.03 - 2022.08","duration":"1년 6개월","type":"정규직","role":"UIUX 전문 회사대표 / PM&PMO","description":"UIUX 전문 회사 설립 및 경영관리, 대표이사 겸임, 기획/디자인 구성 전체 인력 6명"},
+    {"id":"c3","company":"㈜아메바","period":"2019.06 - 2021.02","duration":"1년 9개월","type":"정규직","role":"UIUX 리더 및 영업/매출/사업 관리","description":"UIUX 전략/방향성/방법론 수립, 내부 인력 교육, 제안서 디렉팅 및 PT, 사업관리 및 프로젝트 PM/PMO"},
+    {"id":"c4","company":"뱅크웨어글로벌㈜","period":"2017.10 - 2019.05","duration":"1년 8개월","type":"정규직","role":"금융 SI UIUX 리딩 및 프로젝트 PM","description":"UX 채널사업 PM, UX전략 및 컨설팅, 프로젝트 관리, 방법론 제안"},
+    {"id":"c5","company":"휴메이저러럭셔리","period":"2016.06 - 2017.08","duration":"1년 3개월","type":"정규직","role":"이커머스 구축, 운영, 디지털마케팅","description":"폴리폴리 브랜드몰 구축 및 운영, 온라인 물량계획, 매출 및 마케팅 실무 진행"},
+    {"id":"c6","company":"프럼 UI/UX 컨설팅","period":"2015.06 - 2016.04","duration":"11개월","type":"계약직","role":"신라면세점 KR&CN Web/Mobile 차세대 구축","description":"UIUX 컨설팅 및 PL 역할, 일정관리, 대외부 커뮤니케이션, 화면설계서 작성"},
+    {"id":"c7","company":"서양네트웍스","period":"2013.11 - 2015.04","duration":"1년 6개월","type":"정규직","role":"신규사업(온라인이커머스) 전체 PM 및 쇼핑몰 운영","description":"5개 대표 브랜드 통합몰 구축 및 운영, 마케팅"},
+    {"id":"c8","company":"아지앙스코리아","period":"2012.04 - 2013.09","duration":"1년 6개월","type":"정규직","role":"Platform Dev Unit 리더 및 웹, 모바일 어플리케이션 기획","description":"라코스테 브랜드 & KR 쇼핑몰 운영, 프로젝트 QA & PM"},
+    {"id":"c9","company":"(주)ISEcommerce","period":"2008.03 - 2012.03","duration":"4년 1개월","type":"정규직","role":"이커머스 컨설팅, 구축 및 운영 PM","description":"차세대 글로벌 이커머스 통합 플랫폼 구축 PM, 외부 요청 사이트 제작 및 구축 PM"},
+    {"id":"c10","company":"가야미디어","period":"2001.03 - 2004.03","duration":"3년 1개월","type":"정규직","role":"사이트 운영 및 기획/디자인, 프로모션 기획 및 운영","description":"자체 사이트(www.ikissyou.com) 구축 및 운영, 영화 커뮤니티 1년 만에 10만 회원 모집"},
+    {"id":"c11","company":"지오아이","period":"1996.07 - 2001.02","duration":"4년 8개월","type":"정규직","role":"웹 디자인 및 기획","description":"자체 개발 사이트 구축 및 운영, 웹 사이트 디자인, 기획 및 운영"}
   ],
   "projects": [
-    {
-      "id": "p1",
-      "category": "AI Service",
-      "company": "다이퀘스트 / 플루닛",
-      "title": "플루닛 브랜드 통합 사이트 리뉴얼",
-      "period": "2021.11 - 2022.04",
-      "type": "Renewal, 반응형 Web",
-      "summary": "AI 기술을 활용한 B2B·B2C 서비스 허브 플랫폼 전체 리뉴얼",
-      "description": "플루닛 브랜드 사이트는 자사의 AI기술을 활용한 B2B, B2C 서비스들을 소개하고 이용할 수 있는 게이트와 통합 회원 관리의 역할을 하는 허브 플랫폼이었습니다. 입사 후 6개월 만에 전체 리뉴얼을 진행하여 어드민과 반응형 웹으로 사이트를 리뉴얼 완료하여 팀 전원이 가장 높은 인사평가 점수를 받았습니다.",
-      "url": "https://www.ploonet.com",
-      "tags": [
-        "PO",
-        "PM",
-        "브랜드사이트",
-        "반응형"
-      ],
-      "thumb": "",
-      "images": []
-    },
-    {
-      "id": "p2",
-      "category": "AI Service",
-      "company": "다이퀘스트 / 플루닛",
-      "title": "손비서 — 초개인화 AI비서 모바일 앱",
-      "period": "2022.12 - 2024.06",
-      "type": "신규서비스, 모바일 앱",
-      "summary": "통화 관리·AI 응대·일정 관리를 결합한 초개인화 AI 비서 서비스",
-      "description": "AI콜센터 기술력을 기반으로 통화녹음, 요약, 일정관리, 연락처 기반 고객관리 등 영업과 중소기업/소상공인을 타겟으로 만들어진 AI 개인비서 서비스입니다. GPT와 자체 LLM을 기반으로 12개의 보이스 유형을 TTS로 만들어내고 응대 시나리오까지 전체 PO 역할을 수행했습니다.",
-      "url": "https://apps.apple.com/kr/app/%EC%86%90%EB%B9%84%EC%84%9C/id6449721341",
-      "tags": [
-        "PO",
-        "모바일앱",
-        "AI",
-        "LLM",
-        "TTS"
-      ],
-      "thumb": "",
-      "images": []
-    },
-    {
-      "id": "p3",
-      "category": "AI Service",
-      "company": "다이퀘스트 / 플루닛",
-      "title": "미미콘 — 생성형 AI 소셜 플랫폼",
-      "period": "2024.01 - 2024.07",
-      "type": "신규서비스, 모바일 앱",
-      "summary": "실시간 AI 이미지 생성 기반 이모티콘·소통 모바일 플랫폼",
-      "description": "프롬프트 명령과 실시간 이미지 생성 기술을 중심으로 MZ세대의 소통 방식과 공유를 위해 만들어진 모바일 서비스. 실시간 AI 이미지 생성, STT/TTS, 페르소나 별 AI LLM 등 AI의 모든 기술들이 집약된 서비스입니다.",
-      "url": "",
-      "tags": [
-        "PO",
-        "모바일앱",
-        "생성형AI",
-        "이미지생성"
-      ],
-      "thumb": "thumbs/p3-03.jpg",
-      "images": [
-        "thumbs/p3-03.jpg"
-      ]
-    },
-    {
-      "id": "p4",
-      "category": "AI Service",
-      "company": "다이퀘스트 / 플루닛",
-      "title": "워크센터 — AI 컨택센터 SaaS",
-      "period": "2023.01 - 2023.08",
-      "type": "신규서비스, 반응형 웹/모바일 앱",
-      "summary": "자연스러운 TTS 기반 비즈니스 AI ARS·컨택센터 서비스",
-      "description": "AI ARS 서비스를 중심으로 기계적이 아닌 자연스러운 TTS와 병원, 물류, 판매 등의 각 비즈니스 별 다양한 응대 시나리오를 제공하는 SaaS 서비스. 프런트 전체 기획·디자인·개발 디렉팅 및 통합 정책 정의를 담당했습니다.",
-      "url": "https://workcenter.ploonet.com",
-      "tags": [
-        "PO",
-        "SaaS",
-        "AICC",
-        "TTS"
-      ],
-      "thumb": "thumbs/p4-04.jpg",
-      "images": [
-        "thumbs/p4-04.jpg"
-      ]
-    },
-    {
-      "id": "p5",
-      "category": "AI Service",
-      "company": "다이퀘스트 / 플루닛",
-      "title": "젠웨이브 — 멀티모달 AI 플랫폼",
-      "period": "2024.08 - 2025.10",
-      "type": "신규서비스, Web",
-      "summary": "단어 하나로 이미지·영상·음악을 자동 생성하는 멀티모달 플랫폼",
-      "description": "단어 하나, 문장 한 줄로 자동 완성되는 프롬프트 증강 기술을 기반으로 이미지, 노래, 영상, 캐릭터, BGM, 숏츠를 자동으로 생성하는 멀티 모달 플랫폼. 미드저니, 스테이블디퓨전, 구글 Veo 등 다양한 AI 엔진 적용.",
-      "url": "https://genwave.ai.kr",
-      "tags": [
-        "PO",
-        "멀티모달",
-        "생성형AI",
-        "이미지/영상"
-      ],
-      "thumb": "thumbs/p5-05.jpg",
-      "images": [
-        "thumbs/p5-05.jpg"
-      ]
-    },
-    {
-      "id": "p6",
-      "category": "AI Service",
-      "company": "다이퀘스트 / 플루닛",
-      "title": "젠웨이브 스튜디오 — AI 영상 생성·편집 플랫폼",
-      "period": "2023.02 - 2025.12",
-      "type": "CX총괄",
-      "summary": "AI 아바타 및 문서 업로드로 영상을 자동 생성하는 스튜디오 플랫폼",
-      "description": "AI아바타 및 문서 업로드 시 영상 자동생성이 되는 젠웨이브 스튜디오 CX총괄. CX 및 사용성 검증, AI 품질 관리, 매출 및 BD 전략 수립 및 실행. 한라대학교 공동사업 'AI프로페서' CX 담당.",
-      "url": "https://studio.ploonet.com/main/",
-      "tags": [
-        "CX",
-        "AI영상",
-        "아바타",
-        "플랫폼"
-      ],
-      "thumb": "thumbs/p6-06.jpg",
-      "images": [
-        "thumbs/p6-06.jpg"
-      ]
-    },
-    {
-      "id": "p7",
-      "category": "AI Service",
-      "company": "다이퀘스트 / 플루닛",
-      "title": "PMF 검증을 통한 서비스 도출과 구현",
-      "period": "2022.09 - 2024.05",
-      "type": "전략/기획",
-      "summary": "AI 서비스의 Product-Market Fit 검증 프로세스 설계 및 실행",
-      "description": "PMF 검증을 통한 서비스 구현은 서비스를 직접 사용하는 대상을 중심으로 가설 수립, 내부 전체 직원·타겟 고객 포커스 인터뷰와 테스트 등의 과정을 통해 검증하고 이 결과를 통해 서비스의 궁극적인 목표와 향후 비즈니스 로드맵, 마케팅과 세일즈 방향까지 수립해나갔습니다.",
-      "url": "",
-      "tags": [
-        "PMF",
-        "전략",
-        "리서치",
-        "BM"
-      ],
-      "thumb": "thumbs/p7-07.jpg",
-      "images": [
-        "thumbs/p7-07.jpg"
-      ]
-    },
-    {
-      "id": "p8",
-      "category": "Propose & Consulting",
-      "company": "아메바",
-      "title": "호텔신라 신라트립 & 인터넷 면세점 연간 운영",
-      "period": "2019.12 - 2020.08",
-      "type": "Renewal, PC web, Mobile App",
-      "summary": "경쟁 PT 수주 후 연간 운영을 수행한 면세점 UX 제안 프로젝트",
-      "description": "4개의 업체와 경쟁 PT를 통해 수주, 2020년 연간 운영을 수행한 프로젝트. 사용자 & 대상 타겟 분석, 시장현황 및 경쟁사 현황 분석, 제안 방향성 도출, 컨셉 슬로건 및 전략 방안 정의, 시안용 프로토타입 설계 6단계로 수행했습니다.",
-      "url": "",
-      "tags": [
-        "제안",
-        "PT",
-        "UX컨설팅",
-        "이커머스"
-      ],
-      "thumb": "thumbs/p9-09.jpg",
-      "images": [
-        "thumbs/p9-09.jpg"
-      ]
-    },
-    {
-      "id": "p9",
-      "category": "Propose & Consulting",
-      "company": "아메바",
-      "title": "SKT Jump AR/VR App 고도화",
-      "period": "2020.02 - 2021.02",
-      "type": "Renewal, Mobile web, App",
-      "summary": "5천만원 프로젝트에서 연간 운영으로 이어진 AR/VR 앱 고도화",
-      "description": "기존 앱을 고도화 하기 위한 목표로 제안을 통해 수주된 프로젝트로 5천만원으로 시작된 프로젝트가 연간 운영 건으로 이어졌고, 고객사로부터 큰 칭찬과 감사의 선물을 받았던 성공적인 프로젝트였습니다.",
-      "url": "",
-      "tags": [
-        "제안",
-        "AR/VR",
-        "앱고도화",
-        "PMO"
-      ],
-      "thumb": "thumbs/p13-13.jpg",
-      "images": [
-        "thumbs/p13-13.jpg"
-      ]
-    },
-    {
-      "id": "p10",
-      "category": "Propose & Consulting",
-      "company": "아메바",
-      "title": "SK브로드밴드 BTV Plus & ZEM Kids 리뉴얼",
-      "period": "2019.12 - 2021.02",
-      "type": "Renewal, TV & Mobile App",
-      "summary": "30여 명 투입, 2년간 구도화·운영으로 이어진 대형 제안 프로젝트",
-      "description": "총 3개의 채널을 리뉴얼해야 하고 각 채널마다의 제안을 진행해야 하여 30여 명의 인력이 2주간 투입되어 진행했던 제안이었습니다. 깊이 있는 이해도와 SK브로드밴드가 나아가고자 하는 방향을 정확히 짚어냈고 이후 2년간의 구도화와 운영을 수행하게 된 프로젝트입니다.",
-      "url": "",
-      "tags": [
-        "제안",
-        "TV앱",
-        "모바일앱",
-        "PMO"
-      ],
-      "thumb": "thumbs/p16-16.jpg",
-      "images": [
-        "thumbs/p16-16.jpg"
-      ]
-    },
-    {
-      "id": "p11",
-      "category": "Propose & Consulting",
-      "company": "아메바",
-      "title": "부산은행 가상화폐 앱 UIUX 리뉴얼 컨설팅",
-      "period": "2020.08 - 2020.10",
-      "type": "Renewal, Mobile App",
-      "summary": "블록체인 앱의 플랫폼화를 위한 UX 전략 및 UT 기반 컨설팅",
-      "description": "금융의 서비스들은 거래의 개념에서 플랫폼으로 진화하고 있습니다. 가상 화폐와 지역, 그리고 소상공인과의 상생의 관계형성을 위해 시작된 블록체인 앱의 플랫폼화를 위한 사용자 경험과 비즈니스 방향성 제시 컨설팅.",
-      "url": "",
-      "tags": [
-        "UX컨설팅",
-        "금융",
-        "UT",
-        "블록체인"
-      ],
-      "thumb": "thumbs/p20-20.jpg",
-      "images": [
-        "thumbs/p20-20.jpg"
-      ]
-    },
-    {
-      "id": "p12",
-      "category": "Propose & Consulting",
-      "company": "아메바",
-      "title": "LG전자 생활서비스 상품화 컨설팅",
-      "period": "2020.05 - 2020.08",
-      "type": "Renewal, Mobile App",
-      "summary": "제품 연계 생활 밀착 서비스 플랫폼화를 위한 UX 컨설팅",
-      "description": "제품을 생산하고 판매하는 것에 그치지 않고 제품과 소비자와의 모든 생활이 유기적인 관계를 형성해 나갈 수 있도록 기존 앱 내에 생활 밀착 서비스로 확대하기 위한 컨설팅 프로젝트.",
-      "url": "",
-      "tags": [
-        "UX컨설팅",
-        "생활서비스",
-        "플랫폼",
-        "LG"
-      ],
-      "thumb": "thumbs/p23-23.jpg",
-      "images": [
-        "thumbs/p23-23.jpg"
-      ]
-    },
-    {
-      "id": "p13",
-      "category": "UIUX Build",
-      "company": "피플 (본인 사업자)",
-      "title": "호텔신라 비대면 화상 상담 시스템 (V-Chat 라뷰온)",
-      "period": "2022.02 - 2022.07",
-      "type": "New, PC web, APP, Admin",
-      "summary": "로레알 그룹과 협업한 뷰티 화상 상담 시스템 구축 — 웹어워드 수상",
-      "description": "신라호텔은 대표적인 뷰티 브랜드인 로레알 그룹과 함께 라이브 채팅과 화상 상담 시스템을 통해 뷰티 어드바이저의 역할과 상품을 추천/홍보하기 위한 시스템을 구축. 2022년 9월 오픈, 한국웹어워드 모바일서비스 이노베이션 부문 포함 3개 분야 수상.",
-      "url": "",
-      "tags": [
-        "PM",
-        "화상상담",
-        "모바일앱",
-        "웹어워드수상"
-      ],
-      "thumb": "thumbs/p25-25.jpg",
-      "images": [
-        "thumbs/p25-25.jpg"
-      ]
-    },
-    {
-      "id": "p14",
-      "category": "UIUX Build",
-      "company": "아메바",
-      "title": "멀티캠퍼스 러닝플랫폼 고도화",
-      "period": "2021.08 - 2021.12",
-      "type": "Renewal, PC web, APP, Admin",
-      "summary": "대기업 교육 시스템의 전면 디지털화 플랫폼 고도화 프로젝트",
-      "description": "코로나로 인해 기업의 직원 교육시스템 역시 비대면과 재택업무에 대한 고려가 필요해졌습니다. 멀티캠퍼스는 기존 오프라인 중심 교육 시스템을 전면 리뉴얼하여 디지털화하는 전사 고도화 프로젝트를 진행했습니다.",
-      "url": "",
-      "tags": [
-        "PM",
-        "러닝플랫폼",
-        "교육",
-        "디지털전환"
-      ],
-      "thumb": "thumbs/p28-28.jpg",
-      "images": [
-        "thumbs/p28-28.jpg"
-      ]
-    },
-    {
-      "id": "p15",
-      "category": "UIUX Build",
-      "company": "뱅크웨어글로벌",
-      "title": "친애저축은행 동남아 JTPay 앱 개발",
-      "period": "2018.02 - 2018.06",
-      "type": "신규서비스, 모바일 앱",
-      "summary": "동남아 시장 대상 디지털 페이먼트 프로토타입 앱 개발",
-      "description": "모바일 뱅킹 서비스의 잠재력이 큰 동남아를 대상으로 친애저축은행과 뱅크웨어글로벌이 디지털 페이먼트 시스템을 위한 Pay App 프로토타입 개발. PAY 충전, 송금, 결제, 출금 서비스 및 소상공인 활성화를 위한 디지털 POS 기능.",
-      "url": "",
-      "tags": [
-        "PM",
-        "핀테크",
-        "동남아",
-        "페이먼트"
-      ],
-      "thumb": "thumbs/p30-30.jpg",
-      "images": [
-        "thumbs/p30-30.jpg"
-      ]
-    },
-    {
-      "id": "p16",
-      "category": "Commerce & Marketing",
-      "company": "휴메이저러럭셔리",
-      "title": "폴리폴리·닥터포헤어 이커머스 & 디지털 마케팅",
-      "period": "2016.07 - 2017.08",
-      "type": "구축/운영",
-      "summary": "글로벌 럭셔리 브랜드 한국 온라인몰 구축 및 디지털 마케팅 총괄",
-      "description": "폴리폴리코리아 구축 및 운영, 온라인 MD & 디지털 마케팅 총괄. 샴푸·뷰티 분야 5개 브랜드몰 운영 및 신규 브랜드몰 구축 PM. 판매계획 및 물량계획, 가격 및 커머스 정책 수립 및 운영.",
-      "url": "",
-      "tags": [
-        "이커머스",
-        "디지털마케팅",
-        "브랜드몰",
-        "MD"
-      ],
-      "thumb": "thumbs/p36-36.jpg",
-      "images": [
-        "thumbs/p36-36.jpg"
-      ]
-    },
-    {
-      "id": "p17",
-      "category": "Commerce & Marketing",
-      "company": "서양네트웍스",
-      "title": "유아동 5개 브랜드 통합몰 구축 및 운영",
-      "period": "2013.11 - 2015.04",
-      "type": "구축/운영",
-      "summary": "오프라인 기반 기업의 온라인 비즈니스 핵심사업화 성공 사례",
-      "description": "블루독, 블루독베이비, 밍크뮤, 알로봇, 리틀그라운드 5개 대표브랜드 통합 직영 브랜드몰 구축 성공. 오프라인 시스템(ERP)와 연동 및 기존 프로세스 온라인화로 회사 전체 로직 수정 완료. 가장 빠른 승진과 연봉 상승의 성과.",
-      "url": "",
-      "tags": [
-        "이커머스",
-        "통합몰",
-        "PM",
-        "디지털전환"
-      ],
-      "thumb": "thumbs/p38-38.jpg",
-      "images": [
-        "thumbs/p38-38.jpg"
-      ]
-    },
-    {
-      "id": "p18",
-      "category": "Commerce & Marketing",
-      "company": "프럼 UI/UX 컨설팅",
-      "title": "신라면세점 KR&CN Web/Mobile 차세대 구축",
-      "period": "2015.06 - 2016.04",
-      "type": "Renewal, Web/Mobile",
-      "summary": "웹어워드 대상 수상 — 신라면세점 차세대 UIUX 리뉴얼",
-      "description": "UIUX 컨설팅 및 PL 역할 수행. 중국 UT분석 결과를 기준한 한국 내 중국사이트 개선 전략 분석 및 제안. 2015 웹어워드 코리아 신라 인터넷면세점 중국몰 웹 글로벌서비스 분야 대상 수상, 모바일 웹 쇼핑 분야 최우수상 수상.",
-      "url": "",
-      "tags": [
-        "PL",
-        "면세점",
-        "웹어워드수상",
-        "UX컨설팅"
-      ],
-      "thumb": "thumbs/p31-31.jpg",
-      "images": [
-        "thumbs/p31-31.jpg"
-      ]
-    }
+    {"id":"p1","category":"AI Service","company":"다이퀘스트 / 플루닛","title":"플루닛 브랜드 통합 사이트 리뉴얼","period":"2021.11 - 2022.04","type":"Renewal, 반응형 Web","summary":"AI 기술을 활용한 B2B·B2C 서비스 허브 플랫폼 전체 리뉴얼","description":"플루닛 브랜드 사이트는 자사의 AI기술을 활용한 B2B, B2C 서비스들을 소개하고 이용할 수 있는 게이트와 통합 회원 관리의 역할을 하는 허브 플랫폼이었습니다. 입사 후 6개월 만에 전체 리뉴얼을 진행하여 어드민과 반응형 웹으로 사이트를 리뉴얼 완료하여 팀 전원이 가장 높은 인사평가 점수를 받았습니다.","url":"https://www.ploonet.com","tags":["PO","PM","브랜드사이트","반응형"],"thumb":"","images":[]},
+    {"id":"p2","category":"AI Service","company":"다이퀘스트 / 플루닛","title":"손비서 — 초개인화 AI비서 모바일 앱","period":"2022.12 - 2024.06","type":"신규서비스, 모바일 앱","summary":"통화 관리·AI 응대·일정 관리를 결합한 초개인화 AI 비서 서비스","description":"AI콜센터 기술력을 기반으로 통화녹음, 요약, 일정관리, 연락처 기반 고객관리 등 영업과 중소기업/소상공인을 타겟으로 만들어진 AI 개인비서 서비스입니다.","url":"https://apps.apple.com/kr/app/%EC%86%90%EB%B9%84%EC%84%9C/id6449721341","tags":["PO","모바일앱","AI","LLM","TTS"],"thumb":"","images":[]},
+    {"id":"p3","category":"AI Service","company":"다이퀘스트 / 플루닛","title":"미미콘 — 생성형 AI 소셜 플랫폼","period":"2024.01 - 2024.07","type":"신규서비스, 모바일 앱","summary":"실시간 AI 이미지 생성 기반 이모티콘·소통 모바일 플랫폼","description":"프롬프트 명령과 실시간 이미지 생성 기술을 중심으로 MZ세대의 소통 방식과 공유를 위해 만들어진 모바일 서비스.","url":"","tags":["PO","모바일앱","생성형AI","이미지생성"],"thumb":"thumbs/p3-03.jpg","images":["thumbs/p3-03.jpg"]},
+    {"id":"p4","category":"AI Service","company":"다이퀘스트 / 플루닛","title":"워크센터 — AI 컨택센터 SaaS","period":"2023.01 - 2023.08","type":"신규서비스, 반응형 웹/모바일 앱","summary":"자연스러운 TTS 기반 비즈니스 AI ARS·컨택센터 서비스","description":"AI ARS 서비스를 중심으로 기계적이 아닌 자연스러운 TTS와 병원, 물류, 판매 등의 각 비즈니스 별 다양한 응대 시나리오를 제공하는 SaaS 서비스.","url":"https://workcenter.ploonet.com","tags":["PO","SaaS","AICC","TTS"],"thumb":"thumbs/p4-04.jpg","images":["thumbs/p4-04.jpg"]},
+    {"id":"p5","category":"AI Service","company":"다이퀘스트 / 플루닛","title":"젠웨이브 — 멀티모달 AI 플랫폼","period":"2024.08 - 2025.10","type":"신규서비스, Web","summary":"단어 하나로 이미지·영상·음악을 자동 생성하는 멀티모달 플랫폼","description":"단어 하나, 문장 한 줄로 자동 완성되는 프롬프트 증강 기술을 기반으로 이미지, 노래, 영상, 캐릭터, BGM, 숏츠를 자동으로 생성하는 멀티 모달 플랫폼.","url":"https://genwave.ai.kr","tags":["PO","멀티모달","생성형AI","이미지/영상"],"thumb":"thumbs/p5-05.jpg","images":["thumbs/p5-05.jpg"]},
+    {"id":"p6","category":"AI Service","company":"다이퀘스트 / 플루닛","title":"젠웨이브 스튜디오 — AI 영상 생성·편집 플랫폼","period":"2023.02 - 2025.12","type":"CX총괄","summary":"AI 아바타 및 문서 업로드로 영상을 자동 생성하는 스튜디오 플랫폼","description":"AI아바타 및 문서 업로드 시 영상 자동생성이 되는 젠웨이브 스튜디오 CX총괄.","url":"https://studio.ploonet.com/main/","tags":["CX","AI영상","아바타","플랫폼"],"thumb":"thumbs/p6-06.jpg","images":["thumbs/p6-06.jpg"]},
+    {"id":"p7","category":"AI Service","company":"다이퀘스트 / 플루닛","title":"PMF 검증을 통한 서비스 도출과 구현","period":"2022.09 - 2024.05","type":"전략/기획","summary":"AI 서비스의 Product-Market Fit 검증 프로세스 설계 및 실행","description":"PMF 검증을 통한 서비스 구현은 서비스를 직접 사용하는 대상을 중심으로 가설 수립, 내부 전체 직원·타겟 고객 포커스 인터뷰와 테스트 등의 과정을 통해 검증하고 이 결과를 통해 서비스의 궁극적인 목표와 향후 비즈니스 로드맵, 마케팅과 세일즈 방향까지 수립해나갔습니다.","url":"","tags":["PMF","전략","리서치","BM"],"thumb":"thumbs/p7-07.jpg","images":["thumbs/p7-07.jpg"]},
+    {"id":"p8","category":"Propose & Consulting","company":"아메바","title":"호텔신라 신라트립 & 인터넷 면세점 연간 운영","period":"2019.12 - 2020.08","type":"Renewal, PC web, Mobile App","summary":"경쟁 PT 수주 후 연간 운영을 수행한 면세점 UX 제안 프로젝트","description":"4개의 업체와 경쟁 PT를 통해 수주, 2020년 연간 운영을 수행한 프로젝트.","url":"","tags":["제안","PT","UX컨설팅","이커머스"],"thumb":"thumbs/p9-09.jpg","images":["thumbs/p9-09.jpg"]},
+    {"id":"p9","category":"Propose & Consulting","company":"아메바","title":"SKT Jump AR/VR App 고도화","period":"2020.02 - 2021.02","type":"Renewal, Mobile web, App","summary":"5천만원 프로젝트에서 연간 운영으로 이어진 AR/VR 앱 고도화","description":"기존 앱을 고도화 하기 위한 목표로 제안을 통해 수주된 프로젝트로 5천만원으로 시작된 프로젝트가 연간 운영 건으로 이어졌습니다.","url":"","tags":["제안","AR/VR","앱고도화","PMO"],"thumb":"thumbs/p13-13.jpg","images":["thumbs/p13-13.jpg"]},
+    {"id":"p10","category":"Propose & Consulting","company":"아메바","title":"SK브로드밴드 BTV Plus & ZEM Kids 리뉴얼","period":"2019.12 - 2021.02","type":"Renewal, TV & Mobile App","summary":"30여 명 투입, 2년간 구도화·운영으로 이어진 대형 제안 프로젝트","description":"총 3개의 채널을 리뉴얼해야 하고 각 채널마다의 제안을 진행해야 하여 30여 명의 인력이 2주간 투입되어 진행했던 제안이었습니다.","url":"","tags":["제안","TV앱","모바일앱","PMO"],"thumb":"thumbs/p16-16.jpg","images":["thumbs/p16-16.jpg"]},
+    {"id":"p11","category":"Propose & Consulting","company":"아메바","title":"부산은행 가상화폐 앱 UIUX 리뉴얼 컨설팅","period":"2020.08 - 2020.10","type":"Renewal, Mobile App","summary":"블록체인 앱의 플랫폼화를 위한 UX 전략 및 UT 기반 컨설팅","description":"금융의 서비스들은 거래의 개념에서 플랫폼으로 진화하고 있습니다. 블록체인 앱의 플랫폼화를 위한 사용자 경험과 비즈니스 방향성 제시 컨설팅.","url":"","tags":["UX컨설팅","금융","UT","블록체인"],"thumb":"thumbs/p20-20.jpg","images":["thumbs/p20-20.jpg"]},
+    {"id":"p12","category":"Propose & Consulting","company":"아메바","title":"LG전자 생활서비스 상품화 컨설팅","period":"2020.05 - 2020.08","type":"Renewal, Mobile App","summary":"제품 연계 생활 밀착 서비스 플랫폼화를 위한 UX 컨설팅","description":"제품을 생산하고 판매하는 것에 그치지 않고 제품과 소비자와의 모든 생활이 유기적인 관계를 형성해 나갈 수 있도록 기존 앱 내에 생활 밀착 서비스로 확대하기 위한 컨설팅 프로젝트.","url":"","tags":["UX컨설팅","생활서비스","플랫폼","LG"],"thumb":"thumbs/p23-23.jpg","images":["thumbs/p23-23.jpg"]},
+    {"id":"p13","category":"UIUX Build","company":"피플 (본인 사업자)","title":"호텔신라 비대면 화상 상담 시스템 (V-Chat 라뷰온)","period":"2022.02 - 2022.07","type":"New, PC web, APP, Admin","summary":"로레알 그룹과 협업한 뷰티 화상 상담 시스템 구축 — 웹어워드 수상","description":"신라호텔은 대표적인 뷰티 브랜드인 로레알 그룹과 함께 라이브 채팅과 화상 상담 시스템을 통해 뷰티 어드바이저의 역할과 상품을 추천/홍보하기 위한 시스템을 구축. 2022년 9월 오픈, 한국웹어워드 모바일서비스 이노베이션 부문 포함 3개 분야 수상.","url":"","tags":["PM","화상상담","모바일앱","웹어워드수상"],"thumb":"thumbs/p25-25.jpg","images":["thumbs/p25-25.jpg"]},
+    {"id":"p14","category":"UIUX Build","company":"아메바","title":"멀티캠퍼스 러닝플랫폼 고도화","period":"2021.08 - 2021.12","type":"Renewal, PC web, APP, Admin","summary":"대기업 교육 시스템의 전면 디지털화 플랫폼 고도화 프로젝트","description":"코로나로 인해 기업의 직원 교육시스템 역시 비대면과 재택업무에 대한 고려가 필요해졌습니다. 멀티캠퍼스는 기존 오프라인 중심 교육 시스템을 전면 리뉴얼하여 디지털화하는 전사 고도화 프로젝트를 진행했습니다.","url":"","tags":["PM","러닝플랫폼","교육","디지털전환"],"thumb":"thumbs/p28-28.jpg","images":["thumbs/p28-28.jpg"]},
+    {"id":"p15","category":"UIUX Build","company":"뱅크웨어글로벌","title":"친애저축은행 동남아 JTPay 앱 개발","period":"2018.02 - 2018.06","type":"신규서비스, 모바일 앱","summary":"동남아 시장 대상 디지털 페이먼트 프로토타입 앱 개발","description":"모바일 뱅킹 서비스의 잠재력이 큰 동남아를 대상으로 친애저축은행과 뱅크웨어글로벌이 디지털 페이먼트 시스템을 위한 Pay App 프로토타입 개발.","url":"","tags":["PM","핀테크","동남아","페이먼트"],"thumb":"thumbs/p30-30.jpg","images":["thumbs/p30-30.jpg"]},
+    {"id":"p16","category":"Commerce & Marketing","company":"휴메이저러럭셔리","title":"폴리폴리·닥터포헤어 이커머스 & 디지털 마케팅","period":"2016.07 - 2017.08","type":"구축/운영","summary":"글로벌 럭셔리 브랜드 한국 온라인몰 구축 및 디지털 마케팅 총괄","description":"폴리폴리코리아 구축 및 운영, 온라인 MD & 디지털 마케팅 총괄. 샴푸·뷰티 분야 5개 브랜드몰 운영 및 신규 브랜드몰 구축 PM.","url":"","tags":["이커머스","디지털마케팅","브랜드몰","MD"],"thumb":"thumbs/p36-36.jpg","images":["thumbs/p36-36.jpg"]},
+    {"id":"p17","category":"Commerce & Marketing","company":"서양네트웍스","title":"유아동 5개 브랜드 통합몰 구축 및 운영","period":"2013.11 - 2015.04","type":"구축/운영","summary":"오프라인 기반 기업의 온라인 비즈니스 핵심사업화 성공 사례","description":"블루독, 블루독베이비, 밍크뮤, 알로봇, 리틀그라운드 5개 대표브랜드 통합 직영 브랜드몰 구축 성공.","url":"","tags":["이커머스","통합몰","PM","디지털전환"],"thumb":"thumbs/p38-38.jpg","images":["thumbs/p38-38.jpg"]},
+    {"id":"p18","category":"Commerce & Marketing","company":"프럼 UI/UX 컨설팅","title":"신라면세점 KR&CN Web/Mobile 차세대 구축","period":"2015.06 - 2016.04","type":"Renewal, Web/Mobile","summary":"웹어워드 대상 수상 — 신라면세점 차세대 UIUX 리뉴얼","description":"UIUX 컨설팅 및 PL 역할 수행. 중국 UT분석 결과를 기준한 한국 내 중국사이트 개선 전략 분석 및 제안. 2015 웹어워드 코리아 신라 인터넷면세점 중국몰 웹 글로벌서비스 분야 대상 수상.","url":"","tags":["PL","면세점","웹어워드수상","UX컨설팅"],"thumb":"thumbs/p31-31.jpg","images":["thumbs/p31-31.jpg"]}
   ],
   "awards": [
-    {
-      "id": "a1",
-      "year": "2022",
-      "title": "한국웹어워드",
-      "detail": "모바일서비스 이노베이션 부문 포함 3개 분야 수상",
-      "project": "V-Chat 라뷰온 (호텔신라 비대면 화상상담 시스템)"
-    },
-    {
-      "id": "a2",
-      "year": "2015",
-      "title": "웹어워드 코리아 대상",
-      "detail": "웹 글로벌서비스 분야 대상 / 모바일 웹 쇼핑 분야 최우수상",
-      "project": "신라 인터넷면세점 중국몰"
-    }
+    {"id":"a1","year":"2022","title":"한국웹어워드","detail":"모바일서비스 이노베이션 부문 포함 3개 분야 수상","project":"V-Chat 라뷰온 (호텔신라 비대면 화상상담 시스템)"},
+    {"id":"a2","year":"2015","title":"웹어워드 코리아 대상","detail":"웹 글로벌서비스 분야 대상 / 모바일 웹 쇼핑 분야 최우수상","project":"신라 인터넷면세점 중국몰"}
   ],
   "media": [
-    {
-      "id": "m1",
-      "title": "SAC 2025 기술 발표",
-      "url": "https://youtu.be/GorRTrf0yjo?si=NhuBvqwABer-1duV",
-      "videoId": "GorRTrf0yjo",
-      "timestamp": 6420,
-      "description": "솔트룩스 연례 기술 컨퍼런스 발표",
-      "thumbnail": ""
-    },
-    {
-      "id": "m2",
-      "title": "SAC 2023 기술 발표",
-      "url": "https://youtu.be/CLnTP3wJxJ8?si=uoVVMUCM9PYm3US0",
-      "videoId": "CLnTP3wJxJ8",
-      "timestamp": 0,
-      "description": "손비서·미미콘 서비스 소개 발표",
-      "thumbnail": ""
-    },
-    {
-      "id": "m3",
-      "title": "플루닛 브랜드 광고 디렉팅",
-      "url": "https://youtu.be/qAA70qFYFPw?si=l5WR0WhRbS6YSnaw",
-      "videoId": "qAA70qFYFPw",
-      "timestamp": 0,
-      "description": "메인 카피부터 촬영까지 전체 디렉션 수행",
-      "thumbnail": ""
-    }
+    {"id":"m1","title":"SAC 2025 기술 발표","url":"https://youtu.be/GorRTrf0yjo?si=NhuBvqwABer-1duV","videoId":"GorRTrf0yjo","timestamp":6420,"description":"솔트룩스 연례 기술 컨퍼런스 발표","thumbnail":""},
+    {"id":"m2","title":"SAC 2023 기술 발표","url":"https://youtu.be/CLnTP3wJxJ8?si=uoVVMUCM9PYm3US0","videoId":"CLnTP3wJxJ8","timestamp":0,"description":"손비서·미미콘 서비스 소개 발표","thumbnail":""},
+    {"id":"m3","title":"플루닛 브랜드 광고 디렉팅","url":"https://youtu.be/qAA70qFYFPw?si=l5WR0WhRbS6YSnaw","videoId":"qAA70qFYFPw","timestamp":0,"description":"메인 카피부터 촬영까지 전체 디렉션 수행","thumbnail":""}
   ],
   "skills": [
-    {
-      "category": "AI & Product",
-      "items": [
-        "AI Service PO/PM",
-        "Product Strategy",
-        "PMF 검증",
-        "Service Architecture",
-        "AI Prompting",
-        "API 기획"
-      ]
-    },
-    {
-      "category": "Planning & UX",
-      "items": [
-        "UIUX Strategy",
-        "UX Consulting",
-        "화면설계",
-        "프로토타이핑",
-        "UT 분석",
-        "CX 전략"
-      ]
-    },
-    {
-      "category": "Tools",
-      "items": [
-        "Figma",
-        "Adobe XD",
-        "Notion",
-        "Jira",
-        "Slack",
-        "Google Analytics"
-      ]
-    },
-    {
-      "category": "Business",
-      "items": [
-        "디지털 마케팅",
-        "이커머스",
-        "사업 전략",
-        "PMO",
-        "제안/PT",
-        "매출 관리"
-      ]
-    }
+    {"category":"AI & Product","items":["AI Service PO/PM","Product Strategy","PMF 검증","Service Architecture","AI Prompting","API 기획"]},
+    {"category":"Planning & UX","items":["UIUX Strategy","UX Consulting","화면설계","프로토타이핑","UT 분석","CX 전략"]},
+    {"category":"Tools","items":["Figma","Adobe XD","Notion","Jira","Slack","Google Analytics"]},
+    {"category":"Business","items":["디지털 마케팅","이커머스","사업 전략","PMO","제안/PT","매출 관리"]}
   ],
   "contact": {
     "email": "biajotti.jh@gmail.com",
@@ -2061,9 +541,9 @@
     "youtube": "https://youtube.com/@biajottijh"
   }
 }
+
 </script>
 
 <script src="main.js"></script>
-
 </body>
 </html>
