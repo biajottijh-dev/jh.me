@@ -324,4 +324,9 @@ function observeFadeIns() {
   document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 }
 
+// 랜딩 시 항상 최상단에서 시작 (브라우저 스크롤 복원 / 해시 점프 방지)
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+window.addEventListener('load', () => window.scrollTo(0, 0));
+
 loadData();
