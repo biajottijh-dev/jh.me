@@ -122,18 +122,8 @@ let currentSlide = 0;
 let totalSlides = 0;
 
 function openModal(p) {
-  document.getElementById('modalCategory').textContent = p.category;
-  document.getElementById('modalTitle').textContent = p.title;
-  document.getElementById('modalCompany').textContent = p.company;
-  document.getElementById('modalMeta').innerHTML = `
-    <div class="meta-item"><div class="meta-label">PERIOD</div><div class="meta-value">${p.period}</div></div>
-    <div class="meta-item"><div class="meta-label">TYPE</div><div class="meta-value">${p.type}</div></div>
-  `;
-  document.getElementById('modalDesc').textContent = p.description;
-  document.getElementById('modalTags').innerHTML = (p.tags||[]).map(t=>`<span class="modal-tag">${t}</span>`).join('');
-  const lw = document.getElementById('modalLinkWrap');
-  lw.innerHTML = p.url ? `<a href="${p.url}" target="_blank" class="modal-link">↗ 사이트 방문</a>` : '';
-
+  // 팝업은 PNG 이미지 자체가 전체 내용(제목·기간·설명·화면)을 담고 있어
+  // 별도 텍스트 패널 없이 이미지만 크게 표시한다.
   const images = p.images && p.images.length > 0 ? p.images : [];
   const slidesEl = document.getElementById('modalSlides');
   const dotsEl = document.getElementById('modalDots');
@@ -180,6 +170,9 @@ function openModal(p) {
   const nextBtn = document.getElementById('slideNext');
   if (prevBtn) prevBtn.style.display = totalSlides > 1 ? '' : 'none';
   if (nextBtn) nextBtn.style.display = totalSlides > 1 ? '' : 'none';
+  // 슬라이드가 1장뿐이면 하단 바(점·화살표)를 숨긴다
+  const bar = document.getElementById('modalSlideBar');
+  if (bar) bar.style.display = totalSlides > 1 ? '' : 'none';
 
   document.getElementById('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';

@@ -130,7 +130,7 @@
   /* MODAL */
   .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s; backdrop-filter: blur(6px); }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
-  .modal { display: grid; grid-template-columns: 420px 1fr; background: #fff; border-radius: 12px; width: 100%; max-width: 1100px; height: 80vh; max-height: 700px; overflow: hidden; position: relative; transform: translateY(20px); transition: transform 0.3s; }
+  .modal { display: flex; flex-direction: column; background: #111; border-radius: 12px; width: 100%; max-width: 1120px; max-height: 92vh; overflow: hidden; position: relative; transform: translateY(20px); transition: transform 0.3s; }
   .modal-overlay.open .modal { transform: translateY(0); }
   .modal-close { position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 50%; cursor: pointer; font-size: 14px; color: white; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.2s; }
   .modal-close:hover { background: rgba(255,255,255,0.3); }
@@ -148,10 +148,10 @@
   .modal-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-en); font-size: 12px; font-weight: 600; padding: 10px 20px; border-radius: 100px; background: white; color: #111; text-decoration: none; transition: opacity 0.2s; }
   .modal-link:hover { opacity: 0.85; }
   .modal-right { background: #111; position: relative; display: flex; flex-direction: column; overflow: hidden; }
-  .modal-slides { flex: 1; display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .modal-slides { display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .modal-slides::-webkit-scrollbar { display: none; }
-  .modal-slide { flex: 0 0 100%; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 20px; background: #111; }
-  .modal-slide img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; display: block; }
+  .modal-slide { flex: 0 0 100%; scroll-snap-align: start; display: flex; align-items: center; justify-content: center; padding: 0; background: #111; }
+  .modal-slide img { width: 100%; height: auto; max-height: calc(92vh - 44px); object-fit: contain; display: block; }
   .modal-slide-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: rgba(255,255,255,0.15); width: 100%; height: 100%; }
   .modal-slide-placeholder span { font-family: var(--font-display); font-size: 48px; font-weight: 800; }
   .modal-slide-placeholder p { font-family: var(--font-en); font-size: 12px; color: rgba(255,255,255,0.2); }
@@ -335,25 +335,12 @@
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
     <button class="modal-close" onclick="closeModalBtn()">✕</button>
-    <div class="modal-left">
-      <div class="modal-left-inner">
-        <div class="modal-category" id="modalCategory"></div>
-        <div class="modal-title" id="modalTitle"></div>
-        <div class="modal-company" id="modalCompany"></div>
-        <div class="modal-meta" id="modalMeta"></div>
-        <p class="modal-desc" id="modalDesc"></p>
-        <div class="modal-tags" id="modalTags"></div>
-        <div id="modalLinkWrap"></div>
-      </div>
-    </div>
-    <div class="modal-right">
-      <div class="modal-slides" id="modalSlides"></div>
-      <div class="modal-slide-bar">
-        <div class="modal-slide-dots" id="modalDots"></div>
-        <div class="modal-slide-nav">
-          <button class="slide-nav-btn" id="slidePrev" onclick="changeSlide(-1)">←</button>
-          <button class="slide-nav-btn" id="slideNext" onclick="changeSlide(1)">→</button>
-        </div>
+    <div class="modal-slides" id="modalSlides"></div>
+    <div class="modal-slide-bar" id="modalSlideBar">
+      <div class="modal-slide-dots" id="modalDots"></div>
+      <div class="modal-slide-nav">
+        <button class="slide-nav-btn" id="slidePrev" onclick="changeSlide(-1)">←</button>
+        <button class="slide-nav-btn" id="slideNext" onclick="changeSlide(1)">→</button>
       </div>
     </div>
   </div>
