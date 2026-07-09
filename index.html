@@ -76,6 +76,8 @@
   .about-philosophy p { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--text-white); line-height: 1.6; }
   .about-title { font-family: var(--font-display); font-size: clamp(36px, 5vw, 64px); letter-spacing: 1px; line-height: 1; margin-bottom: 8px; }
   .about-subtitle { font-family: var(--font-en); font-size: 15px; font-weight: 400; color: var(--text-light); margin-bottom: 20px; }
+  .about-keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .about-keyword { font-family: var(--font-en); font-size: 12px; font-weight: 500; background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.08); padding: 7px 14px; border-radius: 100px; color: var(--text); letter-spacing: 0.2px; white-space: nowrap; }
   .about-text { font-size: 14px; line-height: 1.8; color: #444; margin-bottom: 10px; }
   .about-text-en { font-family: var(--font-en); font-size: 13px; line-height: 1.7; color: #999; margin-bottom: 24px; }
   .about-stats { display: flex; gap: 36px; padding-top: 20px; border-top: 1px solid var(--border); }
@@ -253,7 +255,7 @@
 <body>
 
 <nav>
-  <a href="#hero" class="nav-logo">JH.ME</a>
+  <a href="#about" class="nav-logo">JH.ME</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#career">Career</a></li>
@@ -263,18 +265,6 @@
   </ul>
   <a href="#contact" class="nav-contact">Contact</a>
 </nav>
-
-<section id="hero">
-  <div class="hero-keywords" id="heroKeywords"></div>
-  <div class="hero-photo-wrap">
-    <img class="hero-photo" src="hero.png" alt="김정희" id="heroPhoto">
-  </div>
-  <div class="hero-name-block">
-    <div class="hero-greeting">Hello, my name is</div>
-    <div class="hero-name">Jeounghee Kim</div>
-  </div>
-  <div class="hero-cta">Let's work together →</div>
-</section>
 
 <section id="about">
   <div class="about-grid">
@@ -287,8 +277,9 @@
     </div>
     <div class="about-content fade-in">
       <div class="section-label">About me</div>
-      <div class="about-title" id="aboutName">김정희</div>
+      <div class="about-title" id="aboutName">Jeounghee Kim</div>
       <div class="about-subtitle" id="aboutTitle">AI Service PM · PO</div>
+      <div class="about-keywords" id="aboutKeywords"></div>
       <p class="about-text" id="aboutTextKo"></p>
       <p class="about-text-en" id="aboutTextEn"></p>
       <div class="about-stats">
@@ -1116,6 +1107,6 @@
 }
 </script>
 
-<script src="main.js?v=20260709-2"></script>
+<script src="main.js?v=20260709-3"></script>
 </body>
 </html>

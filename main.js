@@ -21,13 +21,14 @@ function render() {
 
 // ── Hero 키워드 ──
 function renderHeroKeywords() {
-  const wrap = document.getElementById('heroKeywords');
+  // 포지션 키워드를 About 이름 아래에 나열
+  const wrap = document.getElementById('aboutKeywords');
+  if (!wrap) return;
   wrap.innerHTML = '';
   const keywords = DATA.heroKeywords || [];
-  // 좌측 4개, 우측 4개로 분배
-  keywords.forEach((kw, i) => {
+  keywords.forEach((kw) => {
     const tag = document.createElement('div');
-    tag.className = 'keyword-tag';
+    tag.className = 'about-keyword';
     tag.textContent = kw;
     wrap.appendChild(tag);
   });
@@ -37,12 +38,11 @@ function renderHeroKeywords() {
 function renderAbout() {
   const m = DATA.meta || {};
   const a = DATA.about || {};
-  document.getElementById('aboutName').textContent = m.name || '';
+  document.getElementById('aboutName').textContent = m.nameEn || m.name || '';
   document.getElementById('aboutTitle').textContent = m.title || '';
   document.getElementById('aboutTextKo').textContent = a.ko || '';
   document.getElementById('aboutTextEn').textContent = a.en || '';
   document.getElementById('philosophyText').textContent = m.philosophy || '';
-  if (m.heroImage) document.getElementById('heroPhoto').src = m.heroImage;
   if (m.aboutImage) document.getElementById('aboutPhoto').src = m.aboutImage;
 }
 
