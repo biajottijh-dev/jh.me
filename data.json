@@ -144,8 +144,8 @@
       ],
       "thumb": "work/thumbs/20.jpg",
       "images": [
-        "work/20_1.jpg",
-        "work/20_2.jpg"
+        "work/20_2.png",
+        "work/20_1.png"
       ]
     },
     {
@@ -166,7 +166,7 @@
       ],
       "thumb": "work/thumbs/19.jpg",
       "images": [
-        "work/19.jpg"
+        "work/19.png"
       ]
     },
     {
@@ -188,7 +188,7 @@
       ],
       "thumb": "work/thumbs/18.jpg",
       "images": [
-        "work/18.jpg"
+        "work/18.png"
       ]
     },
     {
@@ -209,7 +209,7 @@
       ],
       "thumb": "work/thumbs/17.jpg",
       "images": [
-        "work/17.jpg"
+        "work/17.png"
       ]
     },
     {
@@ -230,7 +230,7 @@
       ],
       "thumb": "work/thumbs/16.jpg",
       "images": [
-        "work/16.jpg"
+        "work/16.png"
       ]
     },
     {
@@ -251,7 +251,7 @@
       ],
       "thumb": "work/thumbs/15.jpg",
       "images": [
-        "work/15.jpg"
+        "work/15.png"
       ]
     },
     {
@@ -272,9 +272,9 @@
       ],
       "thumb": "work/thumbs/14.jpg",
       "images": [
-        "work/14_1.jpg",
-        "work/14_2.jpg",
-        "work/14_3.jpg"
+        "work/14_3.png",
+        "work/14_2.png",
+        "work/14_1.png"
       ]
     },
     {
@@ -295,8 +295,8 @@
       ],
       "thumb": "work/thumbs/13.jpg",
       "images": [
-        "work/13_1.jpg",
-        "work/13_2.jpg"
+        "work/13_2.png",
+        "work/13_1.png"
       ]
     },
     {
@@ -317,9 +317,9 @@
       ],
       "thumb": "work/thumbs/12.jpg",
       "images": [
-        "work/12_1.jpg",
-        "work/12_2.jpg",
-        "work/12_3.jpg"
+        "work/12_3.png",
+        "work/12_2.png",
+        "work/12_1.png"
       ]
     },
     {
@@ -340,7 +340,7 @@
       ],
       "thumb": "work/thumbs/11.jpg",
       "images": [
-        "work/11.jpg"
+        "work/11.png"
       ]
     },
     {
@@ -361,7 +361,7 @@
       ],
       "thumb": "work/thumbs/10.jpg",
       "images": [
-        "work/10.jpg"
+        "work/10.png"
       ]
     },
     {
@@ -382,7 +382,7 @@
       ],
       "thumb": "work/thumbs/09.jpg",
       "images": [
-        "work/09.jpg"
+        "work/09.png"
       ]
     },
     {
@@ -403,7 +403,7 @@
       ],
       "thumb": "work/thumbs/08.jpg",
       "images": [
-        "work/08.jpg"
+        "work/08.png"
       ]
     },
     {
@@ -424,7 +424,7 @@
       ],
       "thumb": "work/thumbs/07.jpg",
       "images": [
-        "work/07.jpg"
+        "work/07.png"
       ]
     },
     {
@@ -445,7 +445,7 @@
       ],
       "thumb": "work/thumbs/06.jpg",
       "images": [
-        "work/06.jpg"
+        "work/06.png"
       ]
     },
     {
@@ -466,7 +466,7 @@
       ],
       "thumb": "work/thumbs/05.jpg",
       "images": [
-        "work/05.jpg"
+        "work/05.png"
       ]
     },
     {
@@ -487,8 +487,8 @@
       ],
       "thumb": "work/thumbs/04.jpg",
       "images": [
-        "work/04_1.jpg",
-        "work/04_2.jpg"
+        "work/04_2.png",
+        "work/04_1.png"
       ]
     },
     {
@@ -509,8 +509,8 @@
       ],
       "thumb": "work/thumbs/03.jpg",
       "images": [
-        "work/03_1.jpg",
-        "work/03_2.jpg"
+        "work/03_2.png",
+        "work/03_1.png"
       ]
     },
     {
@@ -531,9 +531,9 @@
       ],
       "thumb": "work/thumbs/02.jpg",
       "images": [
-        "work/02_1.jpg",
-        "work/02_2.jpg",
-        "work/02_3.jpg"
+        "work/02_3.png",
+        "work/02_2.png",
+        "work/02_1.png"
       ]
     },
     {
@@ -554,7 +554,7 @@
       ],
       "thumb": "work/thumbs/01.jpg",
       "images": [
-        "work/01.jpg"
+        "work/01.png"
       ]
     }
   ],
@@ -575,6 +575,15 @@
     }
   ],
   "media": [
+    {
+      "id": "m0",
+      "title": "SAC 2026 기술 발표",
+      "url": "https://youtu.be/Gr4S8p4VsU4?si=8DyDIuc_boh6RxPz",
+      "videoId": "Gr4S8p4VsU4",
+      "timestamp": 0,
+      "description": "솔트룩스 연례 기술 컨퍼런스 발표",
+      "thumbnail": ""
+    },
     {
       "id": "m1",
       "title": "SAC 2025 기술 발표",
@@ -652,6 +661,6 @@
   "contact": {
     "email": "biajotti.jh@gmail.com",
     "linkedin": "",
-    "youtube": "https://youtube.com/@biajottijh"
+    "youtube": ""
   }
 }
